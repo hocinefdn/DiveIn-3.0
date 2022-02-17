@@ -4,6 +4,7 @@ import { api, apiReact } from '../../constants/constants'
 import './css/inscription.css'
 import { useForm } from 'react-hook-form'
 import logo from '../../assets/logos/DiveIn.png'
+import { Modal, Button, Space } from 'antd'
 
 const axios = require('axios')
 
@@ -12,7 +13,34 @@ function Inscription() {
 
     const openNotificationWithIcon = (type) => {
         notification[type]({
-            message: 'Vous vous êtes inscrit avec succès',
+            message:
+                'Vous vous êtes inscrit avec succès, vérifiez votre compte en accedant',
+        })
+    }
+
+    function info() {
+        Modal.info({
+            title: 'VOUS Y ÊTES PRESQUE !',
+            content: (
+                <div>
+                    <p>Un lien pour activer votre compte vous a été envoyé.</p>
+                    <p>
+                        Consultez votre Boîte de réception pour finaliser
+                        l'inscription et rejoindre la communauté DiveIn!
+                    </p>
+                    <p className="text-red-500">
+                        Vérifiez vos spams si vous ne trouvez pas le lien
+                    </p>
+                </div>
+            ),
+            onOk() {
+                window.location = apiReact
+            },
+        })
+    }
+    function success() {
+        Modal.success({
+            content: 'some messages...some messages...',
         })
     }
     const {
@@ -37,7 +65,6 @@ function Inscription() {
             '-' +
             date.getDate()
 
-        console.log(dateInscription)
         axios
             .post(`${api}inscription`, {
                 email: email,
@@ -45,7 +72,7 @@ function Inscription() {
                 prenom: prenom,
                 date_naissance: dateNaissance,
                 date: dateInscription,
-                sexe: sexe, // faut changer et le ne pas le mettre obligatoir
+                sexe: sexe,
                 password: mdp,
             })
             .then((res) => {
@@ -55,15 +82,13 @@ function Inscription() {
                     console.log(msgErrEmail)
                 } else {
                     setTimeout(() => {
-                        openNotificationWithIcon('success')
-                    }, 900)
-                    setTimeout(() => {
                         if (
                             res.data.message ==
                             'Vous vous êtes inscrit avec succès'
-                        )
-                            window.location = apiReact
-                    }, 3000)
+                        ) {
+                            info()
+                        }
+                    }, 1000)
                 }
             })
     }
@@ -232,9 +257,6 @@ function Inscription() {
                             onKeyUp={() => {
                                 trigger('email')
                             }}
-                            // onChange={(e) => {
-                            //     setEmail(e.target.value)
-                            // }}
                             required
                         />
                         {errors.email && (
@@ -262,18 +284,10 @@ function Inscription() {
                                     value: 30,
                                     message: 'Maximum sur 30 caracteres',
                                 },
-                                // pattern: {
-                                //     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,30}$/,
-                                //     message:
-                                //         'au moins une lettre majuscule, une lettre minuscule et un chiffre',
-                                // },
                             })}
                             onKeyUp={() => {
                                 trigger('motdepasse')
                             }}
-                            // onChange={(e) => {
-                            //     setMdp(e.target.value)
-                            // }}
                             required
                         />
                         {errors.motdepasse && (
