@@ -31,6 +31,8 @@ function StructurePrincipal({
     setNbrLikes,
     setNbrComments,
     setNbrPosts,
+    users,
+    setUsers,
 }) {
     const user = useSelector((state) => state.user)
 
@@ -141,7 +143,7 @@ function StructurePrincipal({
                         </div>
 
                         <div className="mt-1 hidden sm:flex relative left-16">
-                            <Complete />
+                            <Complete users={users} setUsers={setUsers} />
                         </div>
                     </div>
                     <div className="relative float-right bottom-5 right-3 sm:bottom-16">

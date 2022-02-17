@@ -35,7 +35,7 @@ function App() {
     const user = useSelector((state) => state.user)
     const params = useParams()
     const [notificationsMessages, setNotificationsMessages] = useState(0)
-
+    const [users, setUsers] = useState([])
     // const infoUser = useSelector((state) => state.infoUser)
     const [modal, setModal] = useState({
         isVisible: false,
@@ -135,6 +135,8 @@ function App() {
                                     setNbrComments={setNbrComments}
                                     nbrPosts={nbrPosts}
                                     setNbrPosts={setNbrPosts}
+                                    users={users}
+                                    setUsers={setUsers}
                                 />
                             }
                         />
@@ -156,6 +158,8 @@ function App() {
                                     setNbrComments={setNbrComments}
                                     nbrPosts={nbrPosts}
                                     setNbrPosts={setNbrPosts}
+                                    users={users}
+                                    setUsers={setUsers}
                                 />
                             }
                         />
@@ -178,6 +182,8 @@ function App() {
                                     nbrPosts={nbrPosts}
                                     setNbrPosts={setNbrPosts}
                                     isAbonnees={true}
+                                    users={users}
+                                    setUsers={setUsers}
                                 />
                             }
                         />
@@ -200,6 +206,8 @@ function App() {
                                     nbrPosts={nbrPosts}
                                     setNbrPosts={setNbrPosts}
                                     isAbonnements={true}
+                                    users={users}
+                                    setUsers={setUsers}
                                 />
                             }
                         />
@@ -222,6 +230,8 @@ function App() {
                                     setNbrComments={setNbrComments}
                                     nbrPosts={nbrPosts}
                                     setNbrPosts={setNbrPosts}
+                                    users={users}
+                                    setUsers={setUsers}
                                 />
                             }
                         />
@@ -245,6 +255,8 @@ function App() {
                                     setNbrComments={setNbrComments}
                                     nbrPosts={nbrPosts}
                                     setNbrPosts={setNbrPosts}
+                                    users={users}
+                                    setUsers={setUsers}
                                 />
                             }
                         />
@@ -269,6 +281,8 @@ function App() {
                                     setNbrComments={setNbrComments}
                                     nbrPosts={nbrPosts}
                                     setNbrPosts={setNbrPosts}
+                                    users={users}
+                                    setUsers={setUsers}
                                 />
                             }
                         />
@@ -310,6 +324,8 @@ function App() {
                                     setNbrComments={setNbrComments}
                                     nbrPosts={nbrPosts}
                                     setNbrPosts={setNbrPosts}
+                                    users={users}
+                                    setUsers={setUsers}
                                 />
                             }
                         />
@@ -331,6 +347,8 @@ function App() {
                                     setNbrComments={setNbrComments}
                                     nbrPosts={nbrPosts}
                                     setNbrPosts={setNbrPosts}
+                                    users={users}
+                                    setUsers={setUsers}
                                 />
                             }
                         />
@@ -352,6 +370,8 @@ function App() {
                                     setNbrComments={setNbrComments}
                                     nbrPosts={nbrPosts}
                                     setNbrPosts={setNbrPosts}
+                                    users={users}
+                                    setUsers={setUsers}
                                 />
                             }
                         />
@@ -376,6 +396,8 @@ function App() {
                                     setNbrComments={setNbrComments}
                                     nbrPosts={nbrPosts}
                                     setNbrPosts={setNbrPosts}
+                                    users={users}
+                                    setUsers={setUsers}
                                 />
                             }
                         />
