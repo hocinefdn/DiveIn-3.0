@@ -18,8 +18,6 @@ function Enregistrements({
     setNbrLikes,
     setNbrComments,
     setNbrPosts,
-    users,
-    setUsers,
 }) {
     const user = useSelector((state) => state.user)
     const [chargerPosts, setChargerPosts] = useState(true)
@@ -74,8 +72,6 @@ function Enregistrements({
                 setNbrComments={setNbrComments}
                 nbrPosts={nbrPosts}
                 setNbrPosts={setNbrPosts}
-                users={users}
-                setUsers={setUsers}
                 titrePage="Enregistré"
                 contenu={
                     <>

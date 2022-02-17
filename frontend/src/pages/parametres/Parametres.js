@@ -22,8 +22,6 @@ function Parametres({
     setNbrLikes,
     setNbrComments,
     setNbrPosts,
-    users,
-    setUsers,
 }) {
     const user = useSelector((state) => state.user)
     const dispatch = useDispatch()
@@ -84,8 +82,6 @@ function Parametres({
                 setNbrComments={setNbrComments}
                 nbrPosts={nbrPosts}
                 setNbrPosts={setNbrPosts}
-                users={users}
-                setUsers={setUsers}
                 titrePage="Paramètres"
                 contenu={
                     <div>

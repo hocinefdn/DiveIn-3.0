@@ -34,8 +34,6 @@ function Profil({
     setNbrLikes,
     setNbrComments,
     setNbrPosts,
-    users,
-    setUsers,
 }) {
     const user = useSelector((state) => state.user)
     const params = useParams()
@@ -181,17 +179,7 @@ function Profil({
                     id_reciever: parseInt(params.id),
                 })
                 .then((response) => {
-                    axios.get(`${api}user/${params.id}`).then((res) => {
-                        console.log(res.data)
-                        setUsers([
-                            ...users,
-                            {
-                                ...res.data[0],
-                                nbr: res.data[0].follower,
-                            },
-                        ])
-                        setIsBloque(false)
-                    })
+                    setIsBloque(false)
                 })
                 .catch((err) => {
                     console.log(err)
@@ -203,11 +191,6 @@ function Profil({
                     id_reciever: parseInt(params.id),
                 })
                 .then((res) => {
-                    setUsers(
-                        users.filter(
-                            (userFilter) => userFilter.id != parseInt(params.id)
-                        )
-                    )
                     setIsBloque(true)
                 })
                 .catch((err) => {
@@ -331,8 +314,6 @@ function Profil({
                     setNbrComments={setNbrComments}
                     nbrPosts={nbrPosts}
                     setNbrPosts={setNbrPosts}
-                    users={users}
-                    setUsers={setUsers}
                     titrePage={'Profil'}
                     contenu={
                         <div className="toutprofil">
