@@ -52,27 +52,32 @@ function Video({ socket, lastMessage }) {
                 } else {
                     navigator.mediaDevices
                         .getDisplayMedia({
-                            video: isVideo,
-                            audio: isAudio,
+                            video: true,
+                            audio: false,
                         })
-                        .then((displayStream) =>
-                            navigator.mediaDevices
-                                .getUserMedia({
-                                    video: false,
-                                    audio: isAudio,
-                                })
-                                .then((audioStream) => {
-                                    var outputTracks = []
-                                    if(isAudio){
-                                    outputTracks = outputTracks.concat(
-                                        audioStream.getTracks()
-                                    )}
-                                    outputTracks = outputTracks.concat(
-                                        displayStream.getTracks()
-                                    )
-                                    gotMedia(new MediaStream(outputTracks))
-                                })
-                        )
+                        .then((displayStream) => {
+                            if (isAudio) {
+                                navigator.mediaDevices
+                                    .getUserMedia({
+                                        video: false,
+                                        audio: isAudio,
+                                    })
+                                    .then((audioStream) => {
+                                        var outputTracks = []
+
+                                        outputTracks = outputTracks.concat(
+                                            audioStream.getTracks()
+                                        )
+
+                                        outputTracks = outputTracks.concat(
+                                            displayStream.getTracks()
+                                        )
+                                        gotMedia(new MediaStream(outputTracks))
+                                    })
+                            } else {
+                                gotMedia(displayStream)
+                            }
+                        })
                         .catch(() => {})
                 }
             function gotMedia(stream) {
