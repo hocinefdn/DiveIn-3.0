@@ -137,7 +137,7 @@ function StructurePrincipal({
                                     className="w-10 h-10"
                                 />
                             </Link>
-                            <span className="text-lg font-bold m-2 text-blue-400 ">
+                            <span className="text-lg font-bold m-2 text-white ">
                                 DiveIn
                             </span>
                             <div className="md:ml-4 lg:ml-16 text-lg font-bold m-2 titre-page text-white">
