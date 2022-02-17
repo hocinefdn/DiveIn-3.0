@@ -1,0 +1,81 @@
+.recupMdp {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    background: linear-gradient(135deg, #71b7e6, #6279e2);
+}
+.recupMdp img {
+    width: 100px;
+    height: 100px;
+    margin: 0 50%;
+}
+.container-recupMdp {
+    max-width: 700px;
+    width: 40%;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+.container-recupMdp label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.container-recupMdp input {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+    /**/
+    height: 45px;
+    width: 80%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 5px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+.container-recupMdp input:focus,
+.container-recupMdp input:valid {
+    border-color: #6279e2;
+}
+.recupMdp button {
+    height: 80%;
+    width: 60%;
+    padding: 8px 10px;
+    margin: 35px 20%;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #6279e2);
+}
+.recupMdp button:hover {
+    background: linear-gradient(-135deg, #71b7e6, #6279e2);
+}
+@media (max-width: 584px) {
+    .recupMdp {
+        max-width: 100%;
+    }
+    .container-recupMdp input {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .container-recupMdp {
+        margin-bottom: 15px;
+    }
+}
+@media (max-width: 459px) {
+    .container-recupMdp {
+        flex-direction: column;
+    }
+}

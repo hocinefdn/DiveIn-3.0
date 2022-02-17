@@ -1,0 +1,157 @@
+.formgrp label {
+    position: relative;
+    top: 20px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.formgrp1 label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.formgrp {
+    display: contents;
+}
+.formgrp input {
+    margin-bottom: 15px;
+    margin-top: 5px;
+    height: 35px;
+    width: 98%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 5px;
+    border: 1px solid rgb(0, 0, 0);
+    transition: all 0.3s ease;
+    font-size: 13px;
+}
+/* .formgrp input:focus,
+.formgrp input:valid {
+    border-color: #6279e2;
+} */
+.formgrp1 input {
+    margin-bottom: 15px;
+    margin-top: 5px;
+    height: 55px;
+    width: 70%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 5px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    font-weight: lighter;
+    font-size: 13px;
+}
+.formgrp1 input:focus,
+.formgrp1 input:valid {
+    border-color: #6279e2;
+}
+.formgrp1 textarea {
+    margin-bottom: 15px;
+    margin-top: 5px;
+    height: 55px;
+    width: 70%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 5px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    font-weight: lighter;
+    font-size: 13px;
+}
+.formgrp1 textarea:focus,
+.formgrp1 textarea:valid {
+    border-color: #6279e2;
+}
+.btn-parametre {
+    /* width: 20%; */
+    padding: 8px 20px;
+    float: right;
+    /* margin-left-51.5% */
+    height: 25px;
+
+    /* margin: 5px 10px; */
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #6279e2);
+}
+.btn-parametre:hover {
+    background: linear-gradient(-135deg, #71b7e6, #6279e2);
+}
+
+.btn-MdpVld {
+    width: 23%;
+    padding: 8px 6px;
+    margin-left: 53.5%;
+    height: 25px;
+    /* margin: 5px 10px; */
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #6279e2);
+}
+.btn-MdpVld:hover {
+    background: linear-gradient(-135deg, #71b7e6, #6279e2);
+}
+.btn-contactus {
+    width: 23%;
+    padding: 8px 6px;
+    margin-left: 47.5%;
+    height: 25px;
+    /* margin: 5px 10px; */
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #6279e2);
+}
+.btn-contactus:hover {
+    background: linear-gradient(-135deg, #71b7e6, #6279e2);
+}
+
+.nomPrenom {
+    display: inline-flex;
+    width: 100%;
+}
+
+.formgrp .labelBio {
+    position: relative;
+    top: 0px;
+}
+
+.formgrp .input-date {
+    width: 50%;
+}
+
+@media only screen and (max-width: 375px) {
+    .bio,
+    .formgrp input {
+        width: 100%;
+    }
+    .nomPrenom {
+        display: block;
+    }
+    .formgrp {
+        display: flex;
+    }
+
+    .formgrp .input-date {
+        width: 38%;
+    }
+}

@@ -1,0 +1,42 @@
+.hauteur-discussion {
+    height: 72.5vh;
+    overflow: scroll;
+}
+
+.width-descussion {
+    width: 75%;
+}
+/* --------largerur --------------- */
+@media only screen and (max-width: 1100px) {
+    .width-descussion {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 741px) {
+    .width-descussion {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-height: 659px) {
+    .hauteur-discussion {
+        height: 67.4vh;
+    }
+}
+@media only screen and (max-height: 658px) {
+    .hauteur-discussion {
+        height: 70.3vh;
+    }
+}
+@media only screen and (max-height: 640px) {
+    .hauteur-discussion {
+        height: 63.8vh;
+    }
+}
+
+@media only screen and (max-height: 520px) {
+    .hauteur-discussion {
+        height: 58vh;
+    }
+}

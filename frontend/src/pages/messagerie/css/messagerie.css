@@ -1,0 +1,17 @@
+@media only screen and (max-width: 700px) {
+    .message {
+        display: flex;
+        flex-direction: column;
+    }
+    .message_Top {
+        padding: 10px;
+    }
+    .message_text {
+        padding: 10px;
+        margin-bottom: 0;
+        border-radius: 20px;
+        background-color: #6c6cff;
+        color: white;
+        max-width: 280px;
+    }
+}
