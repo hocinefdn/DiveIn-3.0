@@ -342,7 +342,7 @@ DiveInDB.getCommentairesPost = (id_post) => {
 //------- ajouter un commentaire  id_user, id_post, et content
 DiveInDB.addCommentaire = (id_user, id_post, content) => {
     const query =
-        'INSERT INTO comments( id_user, id_post, content) VALUES (?,?,?);'
+        'INSERT INTO comments( id_user, id_post, content) VALUES (?,?,?);SELECT LAST_INSERT_ID() as id;'
 
     return new Promise((resolve, reject) => {
         pool.query(query, [id_user, id_post, content], (err, results) => {

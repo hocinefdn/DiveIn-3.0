@@ -44,19 +44,29 @@ function ZoneCommentaires({
                         res.data.insertId
                     )
 
-                    return axios({
-                        method: 'GET',
-                        url: `${api}actualite/last-commentaire/${post.id}&${user.infoUser.id}`,
-                    }).then((res) => {
-                        setCommentairesPost([res.data[0], ...commentairesPost])
-                    })
+                    const data = {
+                        id: res.data[1][0].id, // id de commentaire
+                        id_user: user.infoUser.id,
+                        lastname: user.infoUser.lastname,
+                        firstname: user.infoUser.firstname,
+                        image: user.infoUser.image,
+                        content: commentaire,
+                        date: Date(),
+                    }
+
                     // return axios({
                     //     method: 'GET',
-                    //     url: `${api}actualite/commentaires/${post.id}`,
+                    //     url: `${api}actualite/last-commentaire/${post.id}&${user.infoUser.id}`,
                     // }).then((res) => {
-                    //     setCommentairesPost(res.data)
-                    // })
+                    setCommentairesPost([data, ...commentairesPost])
                 })
+                // return axios({
+                //     method: 'GET',
+                //     url: `${api}actualite/commentaires/${post.id}`,
+                // }).then((res) => {
+                //     setCommentairesPost(res.data)
+                // })
+                // })
                 // .then((res) => {
                 //     const data = {
                 //         id_user: user.infoUser.id,
