@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './css/profil.css'
-import { Col, Divider, Row, Input, Modal } from 'antd'
+import { Col, Divider, Row, Input, Modal, Tooltip } from 'antd'
 import couverture1 from '../../assets/images/couverture1.jpeg'
 import profil1 from '../../assets/images/image_profil_vide.png'
 import Post from '../filActualite/components/Post'
-import { CalendarOutlined, CameraOutlined } from '@ant-design/icons'
+import {
+    CalendarOutlined,
+    CameraFilled,
+    CameraOutlined,
+    MoreOutlined,
+} from '@ant-design/icons'
 import Profilpost from './components/Profilpost'
 import { useSelector, useDispatch } from 'react-redux'
 import StructurePrincipal from '../components/StructurePrincipal'
@@ -13,7 +18,7 @@ import BarreDroite from '../components/BarreDroite'
 import MesPost from './components/MesPost'
 import MesLikes from './components/MesLikes'
 import Media from './components/Media'
-import { useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { api } from '../../constants/constants'
 import { format } from 'timeago.js'
 import moment from 'moment'
@@ -21,6 +26,10 @@ import Redives from './components/Redives'
 import Followers from './components/Followers'
 import Followed from './components/Followed'
 import FollowUnfollow from '../components/FollowUnfollow'
+import LongMenu from './components/LongMenu'
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto'
+import StandardImageList from './components/StandardImageList'
+import { Grid } from '@mui/material'
 
 const axios = require('axios')
 function Profil({
@@ -39,6 +48,7 @@ function Profil({
 }) {
     const user = useSelector((state) => state.user)
     const params = useParams()
+
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
     const [birthday, setBirthday] = useState()
@@ -51,6 +61,7 @@ function Profil({
     const [imageCouverture, setImageCouverture] = useState()
     const [followers, setFollowers] = useState()
     const [followeds, setFolloweds] = useState()
+
     const [isFollowed, setIsFollowed] = useState()
     const [isBloque, setIsBloque] = useState()
 
@@ -116,34 +127,33 @@ function Profil({
             })
     }
 
-    function changeFollow() {
-        if (!isFollowed) {
-            axios
-                .post(`${api}user/follow`, {
-                    follower_id: parseInt(user.id),
-                    followed_id: parseInt(params.id),
-                })
-                .then((res) => {
-                    setIsFollowed(true)
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        } else {
-            axios
-                .post(`${api}user/unfollow`, {
-                    follower_id: parseInt(user.id),
-                    followed_id: parseInt(params.id),
-                })
-                .then((res) => {
-                    setIsFollowed(false)
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        }
-    }
-
+    // function changeFollow() {
+    //     if (!isFollowed) {
+    //         axios
+    //             .post(`${api}user/follow`, {
+    //                 follower_id: user.id,
+    //                 followed_id: params.id,
+    //             })
+    //             .then((res) => {
+    //                 setIsFollowed(true)
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err)
+    //             })
+    //     } else {
+    //         axios
+    //             .post(`${api}user/unfollow`, {
+    //                 follower_id: user.id,
+    //                 followed_id: params.id,
+    //             })
+    //             .then((res) => {
+    //                 setIsFollowed(false)
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err)
+    //             })
+    //     }
+    // }
     function getFollow() {
         axios
             .post(`${api}user/getfollow`, {
@@ -173,48 +183,33 @@ function Profil({
                 console.log(err)
             })
     }
-    function changeBloque() {
-        if (isBloque) {
-            axios
-                .post(`${api}messagerie/messagedeblock`, {
-                    id_sender: parseInt(user.id),
-                    id_reciever: parseInt(params.id),
-                })
-                .then((response) => {
-                    axios.get(`${api}user/${params.id}`).then((res) => {
-                        console.log(res.data)
-                        setUsers([
-                            ...users,
-                            {
-                                ...res.data[0],
-                                nbr: res.data[0].follower,
-                            },
-                        ])
-                        setIsBloque(false)
-                    })
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        } else {
-            axios
-                .post(`${api}messagerie/messageblock`, {
-                    id_sender: parseInt(user.id),
-                    id_reciever: parseInt(params.id),
-                })
-                .then((res) => {
-                    setUsers(
-                        users.filter(
-                            (userFilter) => userFilter.id != parseInt(params.id)
-                        )
-                    )
-                    setIsBloque(true)
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        }
-    }
+    // function changeBloque() {
+    //     if (isBloque) {
+    //         axios
+    //             .post(`${api}messagerie/messagedeblock`, {
+    //                 id_sender: user.id,
+    //                 id_reciever: params.id,
+    //             })
+    //             .then((res) => {
+    //                 setIsBloque(false)
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err)
+    //             })
+    //     } else {
+    //         axios
+    //             .post(`${api}messagerie/messageblock`, {
+    //                 id_sender: user.id,
+    //                 id_reciever: params.id,
+    //             })
+    //             .then((res) => {
+    //                 setIsBloque(true)
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err)
+    //             })
+    //     }
+    // }
 
     function changeProfilImage() {
         console.log('date')
@@ -286,36 +281,11 @@ function Profil({
         }, 200)
     }, [params.id])
 
-    // //--------------- pour voir qui les abonnées  -----------------------------
-    // const [isModalFollowersVisible, setIsModalFollowersVisible] =
-    //     useState(false)
+    const Navigate = useNavigate()
 
-    // const ClickSeeFollowers = () => {
-    //     setIsModalFollowersVisible(true)
-    // }
-
-    // const handleFollowersOk = () => {
-    //     setIsModalFollowersVisible(false)
-    // }
-
-    // const handleFollowersCancel = () => {
-    //     setIsModalFollowersVisible(false)
-    // }
-
-    // //--------------- pour voir qui les abonnements  -----------------------------
-    // const [isModalFollowedVisible, setIsModalFollowedVisible] = useState(false)
-
-    // const ClickSeeFollowed = () => {
-    //     setIsModalFollowedVisible(true)
-    // }
-
-    // const handleFollowedOk = () => {
-    //     setIsModalFollowedVisible(false)
-    // }
-
-    // const handleFollowedCancel = () => {
-    //     setIsModalFollowedVisible(false)
-    // }
+    const editerprofil = () => {
+        Navigate('../parametres')
+    }
 
     return (
         <>
@@ -354,19 +324,38 @@ function Profil({
                                                         alt=""
                                                     />
                                                 )}
+                                                {user.id == params.id ? (
+                                                    <div>
+                                                        <label htmlFor="couv">
+                                                            <Grid item>
+                                                                <Tooltip
+                                                                    title="changer photo de couverture"
+                                                                    placement="left"
+                                                                >
+                                                                    <AddAPhotoIcon
+                                                                        className="iconephotocouv"
+                                                                        style={{
+                                                                            cursor: 'pointer',
+                                                                        }}
+                                                                    />
+                                                                </Tooltip>
+                                                            </Grid>
+                                                        </label>
 
-                                                <Input
-                                                    id="couv"
-                                                    type="file"
-                                                    className="iconephotocouv"
-                                                    onChange={changeCouvImage}
-                                                    style={{
-                                                        padding: '0',
-                                                        border: 'none',
-                                                        background: 'none',
-                                                    }}
-                                                    icon={<CameraOutlined />}
-                                                />
+                                                        <Input
+                                                            id="couv"
+                                                            type="file"
+                                                            onChange={
+                                                                changeCouvImage
+                                                            }
+                                                            style={{
+                                                                display: 'none',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                ) : (
+                                                    <div></div>
+                                                )}
 
                                                 {!image ? (
                                                     <img
@@ -381,28 +370,47 @@ function Profil({
                                                         alt=""
                                                     />
                                                 )}
+                                                {user.id == params.id ? (
+                                                    <div>
+                                                        <label htmlFor="profil">
+                                                            <Grid item>
+                                                                <Tooltip
+                                                                    title="changer la photo de profile"
+                                                                    placement="right"
+                                                                >
+                                                                    <AddAPhotoIcon
+                                                                        className="iconephoto"
+                                                                        style={{
+                                                                            cursor: 'pointer',
+                                                                        }}
+                                                                    />
+                                                                </Tooltip>
+                                                            </Grid>
+                                                        </label>
 
-                                                <Input
-                                                    id="profil"
-                                                    type="file"
-                                                    className="iconephoto"
-                                                    onChange={changeProfilImage}
-                                                    style={{
-                                                        padding: '0',
-                                                        border: 'none',
-                                                        background: 'none',
-                                                    }}
-                                                    icon={<CameraOutlined />}
-                                                />
+                                                        <Input
+                                                            id="profil"
+                                                            type="file"
+                                                            onChange={
+                                                                changeProfilImage
+                                                            }
+                                                            style={{
+                                                                display: 'none',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                ) : (
+                                                    <div></div>
+                                                )}
 
                                                 {user.id != params.id ? (
-                                                    <div className="">
-                                                        <div className="btn-editerprofil">
-                                                            {/* <FollowUnfollow
-                                                                follower={
-                                                                    params.id
-                                                                }
-                                                            /> */}
+                                                    <div>
+                                                        <button className="w-6 h-13 bg-gray-200 float-right text-2xl mr-3 mt-1 hover:bg-gray-400 flex justify-center items-center rounded-md">
+                                                            {/* <MoreOutlined />
+                                                             */}
+                                                            <LongMenu />
+                                                        </button>
+                                                        {/* <div className="btn-editerprofil">
                                                             <button
                                                                 onClick={
                                                                     changeFollow
@@ -410,7 +418,7 @@ function Profil({
                                                             >
                                                                 {!isFollowed
                                                                     ? "S'abonner"
-                                                                    : ' se désabonner'}
+                                                                    : 'désabonner'}
                                                             </button>
                                                         </div>
                                                         <div className="btn-editerprofil">
@@ -423,11 +431,14 @@ function Profil({
                                                                     ? 'bloquer'
                                                                     : 'débloquer'}
                                                             </button>
-                                                        </div>
+                                                        </div> */}
                                                     </div>
                                                 ) : (
-                                                    <button>
-                                                        editer profil
+                                                    <button
+                                                        className="btn-editerprofil"
+                                                        onClick={editerprofil}
+                                                    >
+                                                        Editer profil
                                                     </button>
                                                 )}
 
@@ -443,9 +454,7 @@ function Profil({
                                                             new Date(birthday)
                                                         ).format(
                                                             'DD MMM YYYY'
-                                                        )} ${moment(
-                                                            new Date(birthday)
-                                                        ).fromNow()}`}
+                                                        )} `}
                                                     </span>
 
                                                     <div className="abonn">
@@ -501,55 +510,6 @@ function Profil({
                                     </div>
                                 </div>
                             </div>
-
-                            {/* ---------------------------- pour voir les abonnées  ----------------------------  */}
-                            {/* <div className="mt-2 rounded-lg  ">
-                                <Modal
-                                    visible={isModalFollowersVisible}
-                                    onOk={handleFollowersOk}
-                                    onCancel={handleFollowersCancel}
-                                    style={{ top: 30 }}
-                                    width={500}
-                                    footer=""
-                                    className="p-1 ring bg-red-100 rounded-xl"
-                                >
-                                    <Followers
-                                        key={params.id}
-                                        id_user={params.id}
-                                        isModalFollowersVisible={
-                                            isModalFollowersVisible
-                                        }
-                                        setIsModalFollowersVisible={
-                                            setIsModalFollowersVisible
-                                        }
-                                    />
-                                </Modal>
-                            </div>
-
-                            {/* ---------------------------- pour voir les abonnements  ----------------------------  */}
-                            {/* <div className="mt-2 rounded-lg  ">
-                                <Modal
-                                    visible={isModalFollowedVisible}
-                                    onOk={handleFollowedOk}
-                                    onCancel={handleFollowedCancel}
-                                    style={{ top: 30 }}
-                                    width={500}
-                                    footer=""
-                                    className="p-1 ring bg-red-100 rounded-xl"
-                                >
-                                    <Followed
-                                        key={params.id}
-                                        id_user={params.id}
-                                        isModalFollowedVisible={
-                                            isModalFollowedVisible
-                                        }
-                                        setIsModalFollowedVisible={
-                                            setIsModalFollowedVisible
-                                        }
-                                    />
-                                </Modal>
-                            </div>  */}
-
                             {/* <Profilpost /> */}
 
                             {/* ----------------------------------- a la place de composantt Profil post  */}
