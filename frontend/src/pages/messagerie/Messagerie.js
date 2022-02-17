@@ -12,13 +12,19 @@ import Modal from './components/Modal'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { setProp } from '../../redux/actions/userActions'
 import { Button, Tooltip } from 'antd'
-import Icon, { BarsOutlined, UserOutlined } from '@ant-design/icons'
+import Icon, {
+    ArrowLeftOutlined,
+    BarsOutlined,
+    UserOutlined,
+} from '@ant-design/icons'
 
 import DiscussionGroup from './components/DiscussionGroup'
 import { useSocket, useSocketEvent } from 'socket.io-react-hook'
 
 const axios = require('axios')
 function Messagerie({
+    users,
+    setUsers,
     socket,
     lastMessage,
     modal,
@@ -34,6 +40,8 @@ function Messagerie({
 }) {
     const user = useSelector((state) => state.user)
     const [currentContact, setCurrentContact] = useState(null)
+    const [afficherContacts, setAfficherContacts] = useState(false)
+
     const [currentConnected, setCurrentConnected] = useState(false)
     const [contacts, setContacts] = useState([])
     const [groups, setGroups] = useState([])
@@ -69,25 +77,42 @@ function Messagerie({
     }
 
     function contactVisible() {
-        // isDisplayedContacts
-        //     ? document.getElementById('droite').classList.remove('droite')
-        //     : document.getElementById('droite').classList.add('droite')
-        console.log(isDisplayedContacts)
-        setIsDisplayedContacts(!isDisplayedContacts)
-        if (isDisplayedContacts) {
+        if (window.screen.width > 741) return 0
+        setAfficherContacts(!afficherContacts)
+        if (afficherContacts) {
             document.getElementById('droite').style.display = 'block'
             document.getElementById('droite').style.position = 'fixed'
             document.getElementById('droite').style.zIndex = '0'
             document.getElementById('droite').style.right = '0'
         }
-        if (!isDisplayedContacts) {
+        if (!afficherContacts) {
             document.getElementById('droite').style.display = 'none'
         }
+    }
+
+    function contactVisibleTel() {
+        if (window.screen.width > 741) return 0
+        console.log(afficherContacts)
+
+        if (afficherContacts) {
+            document.getElementById('droite').style.display = 'block'
+            document.getElementById('droite').style.position = 'fixed'
+            document.getElementById('droite').style.zIndex = '0'
+            document.getElementById('droite').style.right = '0'
+        }
+        if (!afficherContacts) {
+            document.getElementById('droite').style.display = 'none'
+        }
+        // setIsDisplayedContacts(!afficherContacts)
+        // setAfficherContacts(t)
     }
     useEffect(() => {
         contactVisible()
         getContacts()
     }, [])
+    useEffect(() => {
+        contactVisibleTel()
+    }, [afficherContacts])
     useEffect(() => {
         if (lastMessage)
             if (lastMessage.thisIsVideoCall) {
@@ -109,6 +134,8 @@ function Messagerie({
             {
                 !call ? (
                     <StructurePrincipal
+                        users={users}
+                        setUsers={setUsers}
                         socket={socket}
                         lastMessage={lastMessage}
                         notificationsMessages={notificationsMessages}
@@ -124,16 +151,11 @@ function Messagerie({
                         contenu={
                             <div>
                                 <Button
-                                    style={{
-                                        position: 'absolute',
-
-                                        left: '0vh',
-                                    }}
                                     id="btn-right"
                                     // shape="circle"
                                     onClick={contactVisible}
                                 >
-                                    <UserOutlined className="text-lg" />
+                                    <ArrowLeftOutlined className="text-lg" />
                                 </Button>
                                 {currentContact ? (
                                     !('name' in contacts[currentContact]) ? (
@@ -174,6 +196,7 @@ function Messagerie({
                                 setNotificationsMessages={
                                     setNotificationsMessages
                                 }
+                                setAfficherContacts={setAfficherContacts}
                             />
                         }
                     />

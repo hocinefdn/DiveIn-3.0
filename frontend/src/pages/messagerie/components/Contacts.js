@@ -19,6 +19,7 @@ function Contacts({
     setCurrentConnected,
     notificationsMessages,
     setNotificationsMessages,
+    setAfficherContacts,
 }) {
     const user = useSelector((state) => state.user)
     const [searchData, setSearchData] = useState(null)
@@ -195,6 +196,7 @@ function Contacts({
                                 setNotificationsMessages={
                                     setNotificationsMessages
                                 }
+                                setAfficherContacts={setAfficherContacts}
                             />
                         ) : (
                             <GroupContact
