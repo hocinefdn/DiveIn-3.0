@@ -2,7 +2,11 @@
     height: 72.5vh;
     overflow: scroll;
 }
-
+.connecter {
+    position: absolute;
+    top: -5px;
+    left: -50px;
+}
 .width-descussion {
     width: 75%;
 }
