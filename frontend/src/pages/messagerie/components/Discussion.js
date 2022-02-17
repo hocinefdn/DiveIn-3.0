@@ -401,7 +401,7 @@ function Discussion({
                     ) : null}
                     <DeleteOutlined
                         onClick={deleteMessages}
-                        title="supprimer la discussion"
+                        title="supprimer le commentaire"
                         className="text-sky-600 cursor-pointer text-xl"
                         // style={{ width: '30px', paddingTop: '10px' }}
                     />
@@ -504,7 +504,7 @@ function Discussion({
                 <input type="file" className="w-6" id="file" /> */}
                 <div className="items-center">
                     <button className="flex">
-                        <PaperClipOutlined className="text-lg " />
+                        <FileImageOutlined className="text-lg " />
                         <input
                             type="file"
                             className="w-6 z-100 absolute opacity-0 "

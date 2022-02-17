@@ -37,6 +37,7 @@ function Contact({
     image,
     notificationsMessages,
     setNotificationsMessages,
+    setAfficherContacts,
 }) {
     const user = useSelector((state) => state.user)
     const dispatch = useDispatch()
@@ -92,6 +93,7 @@ function Contact({
         setCurrentContact('' + index)
         dispatch(setProp('currentContact', index))
 
+        setAfficherContacts(false)
         setCurrentConnected(isConnected)
     }
 

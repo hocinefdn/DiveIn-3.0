@@ -38,7 +38,6 @@ function StructurePrincipal({
     setNbrPosts,
 }) {
     const user = useSelector((state) => state.user)
-
     const { Header, Content } = Layout
     const refNotif = React.useRef()
     const refMess = React.createRef()
@@ -158,7 +157,7 @@ function StructurePrincipal({
                                     : setAfficherSearch(true)
                             }}
                         >
-                            <SearchOutlined className="text-2xl" />
+                            <SearchOutlined className="text-2xl text-white font-bold" />
                         </button>
                         <Link to="/messagerie" className="ml-0">
                             <button>
@@ -205,7 +204,7 @@ function StructurePrincipal({
                         <Content className="relative hauteur w-9/12">
                             <div className="bg-white fixed z-50 right-0 left-0 flex justify-center sm:hidden">
                                 {afficherSearch ? (
-                                    <Complete className="flex items-center justify-center" />
+                                    <Complete className="flex items-center justify-center " />
                                 ) : (
                                     ''
                                 )}
