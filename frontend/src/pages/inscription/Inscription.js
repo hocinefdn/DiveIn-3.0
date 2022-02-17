@@ -198,6 +198,7 @@ function Inscription() {
                                         type="radio"
                                         name="sexe"
                                         value="1"
+                                        defaultChecked
                                         className="m-1 "
                                     />
                                 </div>
