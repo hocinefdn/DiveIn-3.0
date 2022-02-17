@@ -23,9 +23,8 @@ module.exports.sendContact = (req, res) => {
 }
 
 module.exports.getUsers = async (req, res) => {
-    console.log(req.params)
     try {
-        let results = await db.getUsers(req.params.id)
+        let results = await db.getUsers()
         res.json(results)
     } catch (err) {
         res.status(500).json({ errorGetUsers: '' + err })

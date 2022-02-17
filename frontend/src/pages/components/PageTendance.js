@@ -18,8 +18,6 @@ function PageTendance({
     setNbrLikes,
     setNbrComments,
     setNbrPosts,
-    users,
-    setUsers,
 }) {
     const user = useSelector((state) => state.user)
     const [chargerPosts, setChargerPosts] = useState(true)
@@ -77,8 +75,6 @@ function PageTendance({
     return (
         <div>
             <StructurePrincipal
-                users={users}
-                setUsers={setUsers}
                 socket={socket}
                 lastMessage={lastMessage}
                 notificationsMessages={notificationsMessages}

@@ -24,8 +24,6 @@ function FilActualite({
     setNbrLikes,
     setNbrComments,
     setNbrPosts,
-    users,
-    setUsers,
 }) {
     const user = useSelector((state) => state.user)
     const [isLoadingPosts, setisLoadingPosts] = useState(true)
@@ -141,8 +139,6 @@ function FilActualite({
                 setNbrComments={setNbrComments}
                 nbrPosts={nbrPosts}
                 setNbrPosts={setNbrPosts}
-                users={users}
-                setUsers={setUsers}
                 contenu={
                     <>
                         <Publier
