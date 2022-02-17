@@ -2,8 +2,11 @@ import React from 'react'
 import { List, Avatar, Popover, Spin } from 'antd'
 import photoProfil_vide from '../../../assets/images/image_profil_vide.png'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { format } from 'timeago.js'
+import { api } from '../../../constants/constants'
 
+const axios = require('axios')
 function NTF({
     notf,
     isLike,
@@ -20,12 +23,62 @@ function NTF({
     setNbrComments,
     setNbrPosts,
 }) {
+
+    const navigate = useNavigate();
+
+    function handleClick(){
+
+        if(isComments){
+            console.log(notf.id_comment)
+            axios({
+                method: 'GET',
+                url: `${api}actualite/setCommentSeen/${notf.id_comment}`
+            })
+                .then(() => {
+                    setNbrComments(nbrComments -1)
+                   navigate('/post/'+ notf.id)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        }
+        if(isLike){
+            axios({
+                method: 'GET',
+                url: `${api}actualite/setLikeSeen/${notf.id_user}/${notf.id}`
+            })
+                .then(() => {
+                    setNbrLikes(nbrLikes -1)
+
+                    navigate('/post/'+ notf.id)
+
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        }
+        if(isPost){
+           /* axios({
+                method: 'GET',
+                url: `${api}actualite/setPostSeen/${notf.id_user}/${notf.id}`
+            })
+                .then(() => {*/
+                    setNbrPosts(0)
+
+                    navigate('/post/'+ notf.id)
+            /*
+                })
+                .catch((err) => {
+                    console.log(err)
+                })*/
+        }
+    }
     return (
         <>
-            <Link to={'/post/' + notf.id}>
                 <div
                     key={notf.id}
                     className="flex space-x-2  p-1 rounded-xl border border-y-1 hover:bg-sky-100 mt-1 "
+                    onClick={handleClick}
                 >
                     <div className="">
                         {/* --------------------  afficher l'image profil user sinon null mettre par defaut  */}
@@ -84,7 +137,6 @@ function NTF({
                         </span>
                     </div>
                 </div>
-            </Link>
         </>
     )
 }

@@ -104,7 +104,7 @@ function Notification({
     useEffect(() => {
         get_notifications_comments()
         get_notifications_likes()
-        // get_notifications_Posts()
+        get_notifications_Posts()
         setTimeout(() => {
             Notification_SEEN()
         }, 10000)

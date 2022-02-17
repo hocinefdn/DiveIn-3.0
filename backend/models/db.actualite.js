@@ -171,9 +171,9 @@ DiveInDB.getNotificationsComments = (id_user) => {
 */
 DiveInDB.getNbrNotifications = (id_user) => {
     const query =
-        'SELECT count(*) AS nbrLikes FROM likes,posts,users WHERE likes.id_user NOT IN (?) AND likes.id_post = posts.id AND posts.id_user=? AND likes.id_user = users.id AND likes.seen = 0 AND date(likes.date) != curdate();' +
-        'SELECT count(*) AS nbrComments FROM comments,posts,users WHERE comments.id_user NOT IN (?) AND comments.id_post = posts.id AND posts.id_user= ? AND comments.id_user = users.id AND comments.seen = 0 AND date(comments.date) != curdate();'
-    // + 'SELECT count(*) AS nbrPosts FROM notifications_posts WHERE notifications_posts.id_user=? AND date(notifications_posts.date) != curdate();'
+        'SELECT count(*) AS nbrLikes FROM likes,posts,users WHERE likes.id_user NOT IN (?) AND likes.id_post = posts.id AND posts.id_user=? AND likes.id_user = users.id AND likes.seen = 0 ;' +
+        'SELECT count(*) AS nbrComments FROM comments,posts,users WHERE comments.id_user NOT IN (?) AND comments.id_post = posts.id AND posts.id_user= ? AND comments.id_user = users.id AND comments.seen = 0 ;'
+        + 'SELECT count(*) AS nbrPosts FROM notifications_posts WHERE notifications_posts.id_user=?;'
 
     return new Promise((resolve, reject) => {
         pool.query(
@@ -198,6 +198,51 @@ DiveInDB.SeenNotifications = (id_user) => {
 
     return new Promise((resolve, reject) => {
         pool.query(query, [id_user, id_user], (err, results) => {
+            if (err) {
+                return reject(err)
+            }
+
+            return resolve(results)
+        })
+    })
+}
+
+DiveInDB.setLikeSeen = (id_post,id_user) => {
+    const query =
+        'UPDATE likes SET seen=1 WHERE id_post = ? AND id_user = ? ;'
+
+    return new Promise((resolve, reject) => {
+        pool.query(query, [id_post, id_user], (err, results) => {
+            if (err) {
+                return reject(err)
+            }
+
+            return resolve(results)
+        })
+    })
+}
+
+DiveInDB.setCommentSeen = (id_comment) => {
+    const query =
+        'UPDATE comments SET seen=1 WHERE id = ?;'
+
+    return new Promise((resolve, reject) => {
+        pool.query(query, [id_comment], (err, results) => {
+            if (err) {
+                return reject(err)
+            }
+
+            return resolve(results)
+        })
+    })
+}
+
+DiveInDB.setPostSeen = (id_user , id_post) => {
+    const query =
+        'DELETE FROM notifications_posts WHERE id_user = ? AND id_post = ?;'
+
+    return new Promise((resolve, reject) => {
+        pool.query(query, [id_user,id_post], (err, results) => {
             if (err) {
                 return reject(err)
             }
@@ -625,5 +670,36 @@ DiveInDB.getLikers = (id_post) => {
         })
     })
 }
+/*
+DiveInDB.addNotificationsPost = (id_user,id_post)=>{
+ const query = 
+    'SELECT follower_id FROM follows WHERE followed_id = ?;'
+    return new Promise((resolve, reject) => {
+        pool.query(query, [id_user], (err, results) => {
+            if (err) {
+                return reject(err)
+            }
+            results.forEach(result =>{
+                DiveInDB.addNotif(id_user,id_post)
+            })
+            console.log(resolve(results))
+            return resolve(results)
+        })
+    })
 
+}
+
+DiveInDB.addNotif = ( id_user,id_post)=>{
+    const query = 
+        'INSERT INTO notifications_posts (id_post,id_user) VALUES (?,?);'
+    return new Promise((resolve, reject) => {
+        pool.query(query, [id_post,id_user], (err, results) => {
+            if (err) {
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })
+}
+*/
 module.exports = DiveInDB

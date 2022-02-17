@@ -358,3 +358,28 @@ module.exports.getLikers = (req, res) => {
         })
         .catch((error) => res.status(400).json({ error }))
 }
+
+module.exports.setCommentSeen = (req, res) => {
+    db.setCommentSeen(req.params.id_comment)
+        .then((data) => {
+            res.status(200).json(data)
+        })
+        .catch((error) => res.status(400).json({ error }))
+}
+
+module.exports.setLikeSeen = (req, res) => {
+    db.setLikeSeen(req.params.id_post , req.params.id_user)
+        .then((data) => {
+            res.status(200).json(data)
+        })
+        .catch((error) => res.status(400).json({ error }))
+}
+
+module.exports.setPostSeen = (req, res) => {
+    db.setPostSeen(req.params.id_user , req.params.id_post)
+        .then((data) => {
+            res.status(200).json(data)
+        })
+        .catch((error) => res.status(400).json({ error }))
+}
+

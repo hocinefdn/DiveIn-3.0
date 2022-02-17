@@ -62,11 +62,7 @@ function App() {
     const [nbrPosts, setNbrPosts] = useState(0)
     // const {sc2, deleteSentMessage, delM}=
     //useSocketEvent(socket,'delete message')
-    const handleClick = () => {
-        setNbrLikes(0)
-        setNbrComments(0)
-        setNbrPosts(0)
-    }
+    
     const { sc, lastMessage, sendM } = useSocketEvent(
         socket,
         'message recieved'
@@ -292,7 +288,6 @@ function App() {
                         />
 
                         <Route
-                            onClick={handleClick}
                             path="/notifications"
                             element={
                                 <Notification

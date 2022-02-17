@@ -64,9 +64,7 @@ function Contacts({
                     .includes(searchTerm.toLowerCase())
             }
         })
-        console.log(mydata)
         if (mydata.length == 0 || value.length == 0) {
-            console.log(mydata)
             setSearchData(null)
         } else {
             setSearchData(mydata)
@@ -152,7 +150,6 @@ function Contacts({
                                 lastname={item.lastname}
                                 firstname={item.firstname}
                                 id={item.id}
-                                index={index}
                                 setCurrentConnected={setCurrentConnected}
                                 connected={item.connected}
                                 image={item.image}
@@ -163,9 +160,9 @@ function Contacts({
                             />
                         ) : (
                             <GroupContact
-                                index={index}
                                 name={item.name}
                                 id={item.id}
+                                contacts={contacts}
                                 founder={item.id_user}
                                 setCurrentContact={setCurrentContact}
                             />

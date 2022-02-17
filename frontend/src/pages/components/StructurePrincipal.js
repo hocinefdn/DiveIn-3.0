@@ -105,12 +105,7 @@ function StructurePrincipal({
         }
     }, [lastMessage])
 
-    const CompteurZero = (e) => {
-        // e.preventDefault()
-        setNbrComments(0)
-        setNbrLikes(0)
-        setNbrPosts(0)
-    }
+
 
     return (
         <div className="">
@@ -177,7 +172,7 @@ function StructurePrincipal({
                             </button>
                         </Link>
                         <Link to="/notifications">
-                            <button onClick={CompteurZero}>
+                            <button>
                                 <NotificationBadge
                                     count={nbrLikes + nbrComments + nbrPosts}
                                     effect={Effect.SCALE}
