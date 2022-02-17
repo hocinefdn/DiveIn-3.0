@@ -401,7 +401,7 @@ function Discussion({
                     ) : null}
                     <DeleteOutlined
                         onClick={deleteMessages}
-                        title="supprimer le commentaire"
+                        title="supprimer la discussion"
                         className="text-sky-600 cursor-pointer text-xl"
                         // style={{ width: '30px', paddingTop: '10px' }}
                     />

@@ -2,7 +2,7 @@ const router = require('express').Router()
 const userController = require('../controllers/user.controller')
 const multer = require('../middleware/multer-config-single')
 
-router.get('/getUsers/:id', userController.getUsers)
+router.get('/getUsers', userController.getUsers)
 router.get('/getAllUsers', userController.getAllUsers)
 router.get('/:id', userController.getUser)
 

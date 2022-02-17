@@ -93,6 +93,7 @@
     margin-left: 20px;
     font-size: 15px;
     color: rgba(77, 79, 83, 0.596);
+    padding-top: 4%;
 }
 .abonn {
     display: flex;
@@ -136,21 +137,31 @@
 .iconephoto {
     position: absolute;
     z-index: 10;
-    width: 25px;
-    height: 25px;
+    width: 23px;
+    height: 23px;
     border-radius: 50%;
     background-color: rgb(245, 243, 243);
     margin-top: 23px;
     padding-top: 5px;
+    margin-left: 3%;
 }
 .iconephotocouv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     z-index: 10;
-    width: 25px;
-    height: 25px;
+    width: 23px;
+    height: 23px;
     border-radius: 50%;
     background-color: rgb(245, 243, 243);
     padding-top: 5px;
     right: 0;
     margin-top: -25px;
+}
+.iconephoto:hover {
+    background-color: rgb(219, 215, 215);
+}
+.iconephotocouv:hover {
+    background-color: rgb(219, 215, 215);
 }

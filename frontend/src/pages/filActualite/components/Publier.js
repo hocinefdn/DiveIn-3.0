@@ -16,7 +16,7 @@ import { api } from '../../../constants/constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { Socket } from 'socket.io-client'
 
-function Publier({ posts, setPosts,socket,lastMessage, followers }) {
+function Publier({ posts, setPosts, socket, lastMessage, followers }) {
     const user = useSelector((state) => state.user)
 
     const [loading, setLoading] = useState(false)
@@ -64,6 +64,7 @@ function Publier({ posts, setPosts,socket,lastMessage, followers }) {
         formdata.append('content', myPost)
         //  formdata.append('type_post', typePost)
         if (file) formdata.append('image', file)
+        console.log(file)
         //if (video) formdata.append('image', video)
 
         // pour ajouter le post a la bdd
@@ -74,30 +75,30 @@ function Publier({ posts, setPosts,socket,lastMessage, followers }) {
                 data: formdata,
             })
                 // pour recuperer le post ajouter dans la bdd pour avoir son id
-                .then(() => {
-                    return axios({
-                        method: 'GET',
-                        url: `${api}actualite/my_post/${user.infoUser.id}`,
-                    }).then((res) => {
-                        const data = {
-                            id: res.data[0].id, // id de post
-                            id_user: user.infoUser.id,
-                            lastname: user.infoUser.lastname,
-                            firstname: user.infoUser.firstname,
-                            image: user.infoUser.image,
-                            content: res.data[0].content,
-                            nbrLikes: 0,
-                            nbrCommentaires: 0,
-                            //type_post: res.data[0].type_post,
-                            image_post: res.data[0].image_post,
-                            //video_post: res.data[0].video_post,
-                            date: Date(),
-                            RTid: null,
-                        }
-                        socket.emit("new post", user.infoUser, data,followers)
-                        setPosts([data, ...posts])
-                    })
+                .then((res) => {
+                    // return axios({
+                    //     method: 'GET',
+                    //     url: `${api}actualite/my_post/${user.infoUser.id}`,
+                    // }).then((res) => {
+                    const data = {
+                        id: res.data[1][0].id, // id de post
+                        id_user: user.infoUser.id,
+                        lastname: user.infoUser.lastname,
+                        firstname: user.infoUser.firstname,
+                        image: user.infoUser.image,
+                        content: myPost,
+                        nbrLikes: 0,
+                        nbrCommentaires: 0,
+                        //type_post: res.data[0].type_post,
+                        image_post: images,
+                        //video_post: res.data[0].video_post,
+                        date: Date(),
+                        RTid: null,
+                    }
+                    socket.emit('new post', user.infoUser, data, followers)
+                    setPosts([data, ...posts])
                 })
+                // })
                 .catch((error) => {
                     console.log({ error })
                 })

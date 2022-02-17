@@ -12,10 +12,15 @@ import {
     MessageOutlined,
     SearchOutlined,
 } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { api } from '../../constants/constants'
+import ImageAvatars from './ImageAvatars'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { Tooltip } from '@mui/material'
+import AccountMenu from './AccountMenu'
+import PetitMenu from './PetitMenu'
+import BarreRecherche from './BarreRecherche'
 
 function StructurePrincipal({
     titrePage,
@@ -40,6 +45,7 @@ function StructurePrincipal({
     const [afficherSearch, setAfficherSearch] = useState(false)
     const [isGetNotifications, setIsGetNotification] = useState(true)
 
+    // const Navigate = useNavigate()
     // une fois user est connecte recupere nbr-notifications
     const GET_NBR_NOTIFICATIONS = () => {
         axios
@@ -54,6 +60,8 @@ function StructurePrincipal({
             })
     }
 
+    // const allerprofil = () => {
+    //     Navigate('../profil/{user.id}')
     const getNotificationsMessages = () => {
         axios
             .get(`${api}messagerie/getNotificationsMessages/${user.id}`)
@@ -117,34 +125,31 @@ function StructurePrincipal({
                     style={{
                         padding: 0,
                         position: 'fixed',
-                        backgroundColor: 'white',
                     }}
                 >
-                    <div className="flex flex-row justify-center p-2">
-                        <div className="absolute left-5 flex flex-row ">
+                    <div className="flex flex-row justify-center ">
+                        <div className="absolute mt-2.5 left-5 flex flex-row ">
                             <TemporaryDrawer />
                             <Link to="/home/">
-                                <div className="flex flex-row">
-                                    <img
-                                        src={logo}
-                                        alt="logo DiveIn"
-                                        className="w-10 h-10"
-                                    />
-                                    <span className="text-lg font-bold m-2 text-blue-400 ">
-                                        DiveIn
-                                    </span>
-                                </div>
+                                <img
+                                    src={logo}
+                                    alt="logo DiveIn"
+                                    className="w-10 h-10"
+                                />
                             </Link>
-                            <div className="md:ml-4 lg:ml-16 text-lg font-bold items-center pl-0 p-2 justify-center">
+                            <span className="text-lg font-bold m-2 text-white ">
+                                DiveIn
+                            </span>
+                            <div className="md:ml-4 lg:ml-16 text-lg font-bold m-2 titre-page text-white">
                                 {titrePage}
                             </div>
                         </div>
 
-                        <div className="mt-1 hidden sm:flex relative left-16">
+                        <div className=" hidden sm:flex ">
                             <Complete />
                         </div>
                     </div>
-                    <div className="relative float-right bottom-5 right-3 sm:bottom-16">
+                    <div className="flex flex-row relative float-right bottom-5 right-3 sm:bottom-16 space-x-2.5 items-center justify-center mt-3.5">
                         <button
                             className="mr-1 sm:hidden"
                             onClick={() => {
@@ -165,11 +170,13 @@ function StructurePrincipal({
                                         style={{ fontSize: '9px' }}
                                     />
                                 }
-                                <MessageOutlined className="text-2xl" />
+                                <Tooltip title="Messages" arrow>
+                                    {/* <PetitMenu> */}
+                                    <MessageOutlined className="w-8 h-8 bg-gray-100 border rounded-lg hover:text-blue-700 hover:bg-gray-200 text-xl " />
+                                    {/* </PetitMenu> */}
+                                </Tooltip>
                             </button>
                         </Link>
-
-                        {/*  si user click redirege ver les notifications */}
                         <Link to="/notifications">
                             <button onClick={CompteurZero}>
                                 <NotificationBadge
@@ -178,9 +185,19 @@ function StructurePrincipal({
                                     className="mt-4"
                                     style={{ fontSize: '9px' }}
                                 />
-                                <BellOutlined className="text-2xl" />
+                                <Tooltip title="Notification" arrow>
+                                    <BellOutlined className="w-8 h-8 bg-gray-100 border rounded-lg hover:text-blue-700 hover:bg-gray-200 text-xl" />
+                                </Tooltip>
                             </button>
                         </Link>
+
+                        <button className="pt-1.5 ">
+                            {/* <Tooltip title="Profil" arrow> */}
+
+                            <AccountMenu />
+
+                            {/* </Tooltip> */}
+                        </button>
                     </div>
                 </Header>
                 <Layout>
@@ -188,7 +205,7 @@ function StructurePrincipal({
                         <Content className="relative hauteur w-9/12">
                             <div className="bg-white fixed z-50 right-0 left-0 flex justify-center sm:hidden">
                                 {afficherSearch ? (
-                                    <Complete className="items-center justify-center" />
+                                    <Complete className="flex items-center justify-center" />
                                 ) : (
                                     ''
                                 )}
@@ -207,6 +224,7 @@ function StructurePrincipal({
                             id="droite"
                             className="relative w-64 droite bg-white "
                         >
+                            {' '}
                             {barreDroite}
                         </div>
                     </Layout>
