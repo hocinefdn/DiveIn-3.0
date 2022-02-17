@@ -44,11 +44,11 @@ export default function AccountMenu() {
                     textAlign: 'center',
                 }}
             >
-                <Tooltip title="Account settings" arrow>
+                <Tooltip title="Profil" arrow>
                     <IconButton
                         onClick={handleClick}
                         size="small"
-                        sx={{ ml: 2 }}
+                        sx={{ ml: 0 }}
                         aria-controls={open ? 'account-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
@@ -121,7 +121,6 @@ export default function AccountMenu() {
                             />
                         )}
                         Profil
-                        {/* <Avatar /> Profile */}
                     </MenuItem>
                 </Link>
 

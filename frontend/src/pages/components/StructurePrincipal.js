@@ -160,8 +160,8 @@ function StructurePrincipal({
                         >
                             <SearchOutlined className="text-2xl" />
                         </button>
-                        <Link to="/messagerie">
-                            <button className="mr-1">
+                        <Link to="/messagerie" className="ml-0">
+                            <button>
                                 {
                                     <NotificationBadge
                                         count={notificationsMessages}
@@ -231,27 +231,6 @@ function StructurePrincipal({
                 </Layout>
             </Layout>
         </div>
-
-        // <div className="w-screen h-screen">
-        //     <div className="w-screen">
-        //         <HeaderC titrePage="" />
-        //     </div>
-        //     {/**------herder------ */}
-        //     <div className="flex flex-row w-full hauteur">
-        //         {/**------contenu ------*/}
-        //         <div className="bg-red-600 w-1/4 ">
-        //             <MenuGauche />
-        //             {/* <MenuGauche /> */}
-        //         </div>
-        //         {/**------gauche ------*/}
-        //         <div className="bg-blue-600 w-2/4">
-        //             zerzgruzgeruzygeruzegruzeygr
-        //         </div>
-        //         {/**------centre ------*/}
-        //         <div className="bg-green-600 w-1/4 ">ererere</div>
-        //         {/**------droite ------*/}
-        //     </div>
-        // </div>
     )
 }
 
