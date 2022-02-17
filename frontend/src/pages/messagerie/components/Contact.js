@@ -19,6 +19,8 @@ import {
     MessageOutlined,
     ThunderboltTwoTone,
 } from '@ant-design/icons'
+
+import Connecter from './Connecter'
 const axios = require('axios')
 
 function Contact({
@@ -173,10 +175,16 @@ function Contact({
                 avatar={<Avatar src={image ? image : photo_default} />}
                 title={
                     <div>
-                        <a href="#" id={index} onClick={handleClick}>
+                        <a
+                            href="#"
+                            id={index}
+                            onClick={handleClick}
+                            className="relative"
+                        >
                             {lastname} {firstname}{' '}
                             {isConnected ? (
-                                <ThunderboltTwoTone twoToneColor={'green'} />
+                                // <ThunderboltTwoTone twoToneColor={'green'} />
+                                <Connecter />
                             ) : null}{' '}
                         </a>
                     </div>
