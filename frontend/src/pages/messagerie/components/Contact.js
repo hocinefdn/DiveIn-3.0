@@ -21,9 +21,11 @@ import {
 } from '@ant-design/icons'
 
 import Connecter from './Connecter'
+import Contacts from './Contacts'
 const axios = require('axios')
 
 function Contact({
+    contacts,
     socket,
     lastMessage,
     index,
@@ -84,13 +86,28 @@ function Contact({
                 console.log(err)
             })
     }
-
+    function find() {
+        contacts.map((contact,i)=>{
+            if(contact.id == id && !contact.name ){
+                setCurrentContact('' + i)
+                dispatch(setProp('currentContact', i)) 
+                return i
+            }
+        })
+    }
     function handleClick(e) {
         //console.log("e",e.target)
         //e.preventDefault()
         setSeen()
-        setCurrentContact('' + index)
-        dispatch(setProp('currentContact', index))
+        if(index){
+            setCurrentContact('' + index)
+            dispatch(setProp('currentContact', index)) 
+        }else{
+            find()
+            /*setCurrentContact('' + index)
+            dispatch(setProp('currentContact', index)) */
+        }
+       
 
         setCurrentConnected(isConnected)
     }

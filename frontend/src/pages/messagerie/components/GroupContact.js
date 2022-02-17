@@ -21,11 +21,24 @@ function GroupContact({
     const user = useSelector((state) => state.user)
     const dispatch = useDispatch()
 
+    function find() {
+        contacts.map((contact,i)=>{
+            if(contact.id == id && contact.name ){
+                setCurrentContact('' + i)
+                dispatch(setProp('currentContact', i)) 
+                return i
+            }
+        })
+    }
     function handleClick(e) {
         //console.log("e",e.target)
         //e.preventDefault()
+        if(index){
         setCurrentContact('' + index)
         dispatch(setProp('currentContact', index))
+        }else{
+            find()
+        }
     }
 
     function leaveGroup() {

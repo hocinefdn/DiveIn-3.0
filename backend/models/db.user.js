@@ -15,7 +15,7 @@ diveInDB.getContact = () => {
 diveInDB.getUsers = () => {
     return new Promise((resolve, reject) => {
         pool.query(
-            'SELECT DISTINCT firstname,lastname,id,email,COALESCE(count(follower_id),0) as nbr FROM users,follows WHERE follows.followed_id = users.id GROUP BY users.id',
+            'SELECT DISTINCT firstname,lastname,id,email,COALESCE(count(follower_id),0) as nbr FROM users LEFT JOIN follows ON follows.followed_id = users.id GROUP BY users.id',
             (err, results) => {
                 if (err) {
                     return reject(err)
