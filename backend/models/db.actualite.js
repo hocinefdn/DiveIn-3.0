@@ -670,5 +670,36 @@ DiveInDB.getLikers = (id_post) => {
         })
     })
 }
+/*
+DiveInDB.addNotificationsPost = (id_user,id_post)=>{
+ const query = 
+    'SELECT follower_id FROM follows WHERE followed_id = ?;'
+    return new Promise((resolve, reject) => {
+        pool.query(query, [id_user], (err, results) => {
+            if (err) {
+                return reject(err)
+            }
+            results.forEach(result =>{
+                DiveInDB.addNotif(id_user,id_post)
+            })
+            console.log(resolve(results))
+            return resolve(results)
+        })
+    })
 
+}
+
+DiveInDB.addNotif = ( id_user,id_post)=>{
+    const query = 
+        'INSERT INTO notifications_posts (id_post,id_user) VALUES (?,?);'
+    return new Promise((resolve, reject) => {
+        pool.query(query, [id_post,id_user], (err, results) => {
+            if (err) {
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })
+}
+*/
 module.exports = DiveInDB
