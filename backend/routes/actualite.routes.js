@@ -98,4 +98,12 @@ router.get('/post/notification/:id_post', actualiteController.getPost)
 // likers
 router.get('/likers/:id_post', actualiteController.getLikers)
 
+
+router.get('/setLikeSeen/:id_user/:id_post',actualiteController.setLikeSeen)
+
+router.get('/setCommentSeen/:id_comment',actualiteController.setCommentSeen)
+
+router.get('/setPostSeen/:id_user/:id_post',actualiteController.setLikeSeen)
+
+
 module.exports = router
