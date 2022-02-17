@@ -37,7 +37,7 @@ function Video({ socket, lastMessage }) {
         var peer = new Peer(params.myId)
         setPeer(peer)
         var bool = true
-        myVideo.muted = true
+        myVideo.current.muted = true // a modifier
         peer.on('open', (id) => {
             var correspendant = null
             if (isVideo || isAudio)
