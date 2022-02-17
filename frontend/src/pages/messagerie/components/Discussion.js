@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {
     DeleteOutlined,
     FileImageOutlined,
+    PictureOutlined,
     MoreOutlined,
     PaperClipOutlined,
     PhoneOutlined,
@@ -342,7 +343,7 @@ function Discussion({
     return (
         <div className="border border-box width-descussion rounded-md">
             <div className=" flex flex-row border-b-2  justify-between rounded-t-md">
-                <div className="flex flex-row w-4/12 pl-1 space-x-2">
+                <div className="flex flex-row w-4/12 pl-1 pt-1 pb-1 space-x-2">
                     {contacts[currentContact].image !== null ? (
                         <Avatar
                             className="w-12 h-12 border border-stone-200 hover:opacity-80 "
@@ -401,7 +402,7 @@ function Discussion({
                     ) : null}
                     <DeleteOutlined
                         onClick={deleteMessages}
-                        title="supprimer le commentaire"
+                        title="supprimer la discussion"
                         className="text-sky-600 cursor-pointer text-xl"
                         // style={{ width: '30px', paddingTop: '10px' }}
                     />
@@ -475,7 +476,7 @@ function Discussion({
                     )}
                 </div>
             </div>
-            <div className="flex flex-row  border-t-2 p-1 space-x-2">
+            <div className="flex flex-row items-center justify-center border-t-2 p-1 space-x-2">
                 <div className="items-center">
                     <SoundRecorder
                         setIsAudio={setIsAudio}
@@ -504,11 +505,12 @@ function Discussion({
                 <input type="file" className="w-6" id="file" /> */}
                 <div className="items-center">
                     <button className="flex">
-                        <FileImageOutlined className="text-lg " />
+                        <PictureOutlined className="text-lg text-sky-600" />
                         <input
                             type="file"
                             className="w-6 z-100 absolute opacity-0 "
                             id="file"
+                            accept=".jpg, .jpeg, .png"
                         />
                     </button>
                 </div>
@@ -540,11 +542,11 @@ function Discussion({
                                 : setAfficherEmofi(true)
                         }}
                     >
-                        <SmileOutlined className="text-lg" />
+                        <SmileOutlined className="text-lg text-sky-600" />
                     </button>
                 </div>
 
-                <div className="items-ceter">
+                <div className="items-center">
                     <button
                         id="sendbtn"
                         className="	w-10  border border-solid rounded-md bg-sky-600 hover:bg-sky-500"

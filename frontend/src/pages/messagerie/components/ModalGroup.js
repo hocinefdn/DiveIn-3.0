@@ -20,10 +20,9 @@ function MyModal({ modalGroup, setModalGroup }) {
             roomId: '',
         })
     }
- 
+
     useEffect(() => {
         setIsModalVisible(modalGroup.isVisible)
-   
     }, [modalGroup.isVisible])
 
     const showModal = () => {
@@ -67,6 +66,56 @@ function MyModal({ modalGroup, setModalGroup }) {
             <Modal
                 title="Appel de Groupe DiveIn"
                 visible={isModalVisible}
+                // onOk={() =>  {
+                //     var modalInfo=modalGroup;
+                //     setModalGroup({
+                //         isVisible: false,
+                //         id_sender: 0,
+                //         id_group: 0,
+                //         roomId: '',
+                //     })
+                //     navigate(`/appel-video-group/${modalInfo.roomId}/${user.id}`);}}
+                onCancel={handleClose}
+                style={{ top: 100 }}
+                width={400}
+                footer=""
+                className="p-1 ring bg-red-100 rounded-xl"
+            >
+                <div className="text-center space-y-2">
+                    <span className="font-bold text-lg">
+                        {reciever.lastname} {reciever.firstname}
+                    </span>
+                    <p className="text-md">vous envoi un Appel</p>
+                    <div className="flex flex-col w-2/3 m-auto justify-center space-y-2">
+                        <button
+                            className="bg-black text-white p-2  text-sm rounded-2xl hover:opacity-80 "
+                            onClick={() => {
+                                var modalInfo = modalGroup
+                                setModalGroup({
+                                    isVisible: false,
+                                    id_sender: 0,
+                                    id_group: 0,
+                                    roomId: '',
+                                })
+                                navigate(
+                                    `/appel-video-group/${modalInfo.roomId}/${user.id}`
+                                )
+                            }}
+                        >
+                            Accepter
+                        </button>
+                        <button
+                            className="bg-white text-black border border-solid p-1 text-lg rounded-2xl hover:bg-sky-100  "
+                            onClick={handleClose}
+                        >
+                            Annuler
+                        </button>
+                    </div>
+                </div>
+            </Modal>
+            {/* <Modal
+                title="Appel de Groupe DiveIn"
+                visible={isModalVisible}
                 onOk={() =>  {
                     var modalInfo=modalGroup;
                     setModalGroup({
@@ -82,7 +131,7 @@ function MyModal({ modalGroup, setModalGroup }) {
                     {reciever.lastname} {reciever.firstname} vous envoi un Appel
                     (clickez sur ok pour accepter ou sur cancel pour refuser)
                 </p>
-            </Modal>
+            </Modal> */}
         </>
     )
 }
