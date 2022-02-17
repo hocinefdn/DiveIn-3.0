@@ -44,7 +44,7 @@ export default function AccountMenu() {
                     textAlign: 'center',
                 }}
             >
-                <Tooltip title="Account settings" arrow>
+                <Tooltip title="Profil" arrow>
                     <IconButton
                         onClick={handleClick}
                         size="small"
@@ -131,14 +131,14 @@ export default function AccountMenu() {
                     <ListItemIcon>
                         <Settings fontSize="small" />
                     </ListItemIcon>
-                    Settings
+                    Paramètres
                 </MenuItem>
 
                 <MenuItem onClick={confirmation}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
-                    Logout
+                    Déconnexion
                 </MenuItem>
             </Menu>
         </React.Fragment>
