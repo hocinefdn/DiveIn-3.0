@@ -20,6 +20,7 @@ function SoundRecorder({ setAudioFile, setIsAudio }) {
     function stop() {
         setIsRecording(false)
         stopRecording()
+
         fetch(audioResult)
             .then((r) => r.blob())
             .then((blobFile) => {
@@ -34,6 +35,7 @@ function SoundRecorder({ setAudioFile, setIsAudio }) {
                 setAudioFile(blobFile)
             })
     }, [audioResult])
+
     return (
         <div>
             <audio ref={audioRef} src={audioResult} />
