@@ -10,7 +10,7 @@ import {
 } from '@ant-design/icons'
 import Picker from 'emoji-picker-react'
 import MessageGroup from './MessageGroup'
-import photo from '../../../assets/images/profil.png'
+import photoGroupe from '../../../assets/images/photo_groupe.jpg'
 import '../../components/style.css'
 import { useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -23,6 +23,7 @@ import FormData from 'form-data'
 import { Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import SoundRecorder from './SoundRecorder'
+import TextareaAutosize from 'react-textarea-autosize'
 import { io } from 'socket.io-client'
 import { DeleteFilled } from '@ant-design/icons'
 import { useSocket, useSocketEvent } from 'socket.io-react-hook'
@@ -293,36 +294,40 @@ function Discussion({
     }, [lastMessage])
 
     return (
-        <div className="w-11/12 mr-8 ml-6 border border-box">
-            <div className="flex flex-row border border-solid p-1 justify-between">
-                <div className="flex flex-row  w-4/12">
-                    <img
-                        src={photo}
+        <div className="border border-box width-descussion rounded-md">
+            <div className="flex flex-row border-b-2  justify-between rounded-t-md">
+                <div className="flex flex-row w-9/12 pl-1 space-x-2">
+                    <Avatar
+                        src={photoGroupe}
                         alt="photo-profil"
-                        className="h-10 w-10 rounded-full"
+                        className="w-12 h-12 border border-stone-200 hover:opacity-80 "
                     />
                     <div className="flex flex-col ml-4">
                         {contacts[currentContact] ? (
-                            <span className="text-base">
-                                Groupe:
-                                {contacts[currentContact].name}
-                            </span>
+                            <div className="flex-flex-row space-x-1">
+                                <span className="text-medium">Groupe:</span>
+                                <span className="font-bold ">
+                                    {contacts[currentContact].name}
+                                </span>
+                            </div>
                         ) : null}
                         <div className="text-xs">Actif il y a 1h</div>
                     </div>
                 </div>
-                <button className="">
-                    <VideoCameraOutlined
-                        className="text-2xl hover:text-sky-500"
-                        onClick={() => {
-                            envoyerAppel()
-                        }}
-                        type="primary"
-                    />
-                </button>
+                <div className="flex flex-row space-x-2 items-center justify-center">
+                    <div className="">
+                        <button className="">
+                            <VideoCameraOutlined
+                                className="text-2xl hover:text-sky-500"
+                                onClick={() => {
+                                    envoyerAppel()
+                                }}
+                                type="primary"
+                            />
+                        </button>
+                    </div>
 
-                <div className="icontop-discussion  w-2/12 flex flex-row justify-between pl-6 pr-2">
-                    <div className=" iconeOption ">
+                    <div className="">
                         <button className="">
                             <MoreOutlined className="text-2xl hover:text-sky-500" />
                         </button>
@@ -387,51 +392,60 @@ function Discussion({
                     )}
                 </div>
             </div>
-            <div className="flex flex-row border border-solid p-2">
-                <div className="w-4 mr-2">
+            <div className="flex flex-row border-t-2 p-1 space-x-2">
+                <div className="items-center">
                     <SoundRecorder
                         setIsAudio={setIsAudio}
                         audioFile={audioFile}
                         setAudioFile={setAudioFile}
                     />
                 </div>
-                <button className="flex items-center w-6 ">
-                    <PaperClipOutlined className="text-lg" />
-                    <input
-                        type="file"
-                        className="w-6 z-100 absolute opacity-0 "
-                        id="file"
-                    />
-                </button>
+                <div className="items-center">
+                    <button className="flex">
+                        <FileImageOutlined className="text-lg" />
+                        <input
+                            type="file"
+                            className="w-6 z-100 absolute opacity-0 "
+                            id="file"
+                            accept=".jpg, .jpeg, .png"
+                        />
+                    </button>
+                </div>
 
-                <textarea
-                    className="h-9 w-10/12 p-2 resize-none border border-solid rounded-lg"
+                <TextareaAutosize
+                    className="w-10/12 p-2 resize-none border border-solid rounded-lg"
+                    minRows={1}
+                    maxRows={2}
                     placeholder="Aa"
                     onChange={(e) => {
                         setMessage(e.target.value)
                     }}
                     value={message}
-                ></textarea>
-                <button
-                    className="mr-1 ml-3"
-                    onClick={() => {
-                        afficherEmofi
-                            ? setAfficherEmofi(false)
-                            : setAfficherEmofi(true)
-                    }}
-                >
-                    <SmileOutlined className="text-lg" />
-                </button>
-
-                <button
-                    className="w-10 ml-1 border border-solid rounded-md bg-sky-600 hover:bg-sky-500"
-                    onClick={() => {
-                        sendMessage()
-                        setMessage('')
-                    }}
-                >
-                    <SendOutlined className="text-lg text-white" />
-                </button>
+                />
+                <div className="items-center">
+                    <button
+                        className=""
+                        onClick={() => {
+                            afficherEmofi
+                                ? setAfficherEmofi(false)
+                                : setAfficherEmofi(true)
+                        }}
+                    >
+                        <SmileOutlined className="text-lg" />
+                    </button>
+                </div>
+                <div className="items-center">
+                    <button
+                        className="	w-10  border border-solid rounded-md bg-sky-600 hover:bg-sky-500"
+                        onClick={(e) => {
+                            sendMessage()
+                            setMessage('')
+                            setAfficherEmofi(false)
+                        }}
+                    >
+                        <SendOutlined className="text-lg text-white" />
+                    </button>
+                </div>
             </div>
         </div>
     )

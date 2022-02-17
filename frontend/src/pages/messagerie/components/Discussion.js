@@ -401,7 +401,7 @@ function Discussion({
                     ) : null}
                     <DeleteOutlined
                         onClick={deleteMessages}
-                        title="supprimer le commentaire"
+                        title="supprimer la discussion"
                         className="text-sky-600 cursor-pointer text-xl"
                         // style={{ width: '30px', paddingTop: '10px' }}
                     />
@@ -509,6 +509,7 @@ function Discussion({
                             type="file"
                             className="w-6 z-100 absolute opacity-0 "
                             id="file"
+                            accept=".jpg, .jpeg, .png"
                         />
                     </button>
                 </div>
@@ -544,7 +545,7 @@ function Discussion({
                     </button>
                 </div>
 
-                <div className="items-ceter">
+                <div className="items-center">
                     <button
                         id="sendbtn"
                         className="	w-10  border border-solid rounded-md bg-sky-600 hover:bg-sky-500"
