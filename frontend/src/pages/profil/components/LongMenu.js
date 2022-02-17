@@ -8,13 +8,10 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { api } from '../../../constants/constants'
 
-// const options = ['Abonner', 'Bloquer']
-
-const ITEM_HEIGHT = 48
-
 const axios = require('axios')
-
-export default function LongMenu({ changeBloque }, { changeFollow }) {
+const ITEM_HEIGHT = 48
+// const options = ['Abonner', 'Bloquer']
+function LongMenu({ changeBloque }, { changeFollow }) {
     const [anchorEl, setAnchorEl] = React.useState(null)
     const open = Boolean(anchorEl)
     const handleClick = (event) => {
@@ -111,7 +108,7 @@ export default function LongMenu({ changeBloque }, { changeFollow }) {
                 }}
             >
                 <MenuItem onClick={changeFollow}>
-                    {!isFollowed ? 'Abonner' : 'Désabonner'}
+                    {!isFollowed ? "S'abonner" : 'Se désabonner'}
                 </MenuItem>
                 <MenuItem onClick={changeBloque}>
                     {!isBloque ? 'Bloquer' : 'Débloquer'}
