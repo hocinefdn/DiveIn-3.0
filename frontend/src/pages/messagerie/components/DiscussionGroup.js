@@ -297,7 +297,7 @@ function Discussion({
     return (
         <div className="border border-box width-descussion rounded-md">
             <div className="flex flex-row border-b-2  justify-between rounded-t-md">
-                <div className="flex flex-row w-9/12 pl-1 space-x-2">
+                <div className="flex flex-row w-9/12 pl-1 pt-1 pb-1 space-x-2">
                     <Avatar
                         src={photoGroupe}
                         alt="photo-profil"

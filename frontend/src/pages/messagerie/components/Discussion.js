@@ -343,7 +343,7 @@ function Discussion({
     return (
         <div className="border border-box width-descussion rounded-md">
             <div className=" flex flex-row border-b-2  justify-between rounded-t-md">
-                <div className="flex flex-row w-4/12 pl-1 space-x-2">
+                <div className="flex flex-row w-4/12 pl-1 pt-1 pb-1 space-x-2">
                     {contacts[currentContact].image !== null ? (
                         <Avatar
                             className="w-12 h-12 border border-stone-200 hover:opacity-80 "
