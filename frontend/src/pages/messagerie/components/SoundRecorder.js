@@ -40,10 +40,10 @@ function SoundRecorder({ setAudioFile, setIsAudio }) {
         <div>
             <audio ref={audioRef} src={audioResult} />
             <div>
-                <div style={{ marginTop: 5 }}>
+                <div>
                     {isRecording ? (
                         <button onClick={stop}>
-                            <AudioTwoTone />
+                            <AudioTwoTone className="p-2 bg-blue-200 rounded-2xl" />
                         </button>
                     ) : (
                         <button
@@ -52,7 +52,7 @@ function SoundRecorder({ setAudioFile, setIsAudio }) {
                                 setIsRecording(true)
                             }}
                         >
-                            <AudioOutlined />
+                            <AudioOutlined className="text-sky-600" />
                         </button>
                     )}
                 </div>

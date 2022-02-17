@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {
     DeleteOutlined,
     FileImageOutlined,
+    PictureOutlined,
     MoreOutlined,
     PaperClipOutlined,
     PhoneOutlined,
@@ -475,7 +476,7 @@ function Discussion({
                     )}
                 </div>
             </div>
-            <div className="flex flex-row  border-t-2 p-1 space-x-2">
+            <div className="flex flex-row items-center justify-center border-t-2 p-1 space-x-2">
                 <div className="items-center">
                     <SoundRecorder
                         setIsAudio={setIsAudio}
@@ -504,7 +505,7 @@ function Discussion({
                 <input type="file" className="w-6" id="file" /> */}
                 <div className="items-center">
                     <button className="flex">
-                        <FileImageOutlined className="text-lg " />
+                        <PictureOutlined className="text-lg text-sky-600" />
                         <input
                             type="file"
                             className="w-6 z-100 absolute opacity-0 "
@@ -541,7 +542,7 @@ function Discussion({
                                 : setAfficherEmofi(true)
                         }}
                     >
-                        <SmileOutlined className="text-lg" />
+                        <SmileOutlined className="text-lg text-sky-600" />
                     </button>
                 </div>
 
