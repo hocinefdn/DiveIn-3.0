@@ -31,6 +31,8 @@ function Messagerie({
     setNbrLikes,
     setNbrComments,
     setNbrPosts,
+    users,
+    setUsers,
 }) {
     const user = useSelector((state) => state.user)
     const [currentContact, setCurrentContact] = useState(null)
@@ -119,6 +121,8 @@ function Messagerie({
                         setNbrComments={setNbrComments}
                         nbrPosts={nbrPosts}
                         setNbrPosts={setNbrPosts}
+                        users={users}
+                        setUsers={setUsers}
                         style={{ height: '50%' }}
                         titrePage="Messagerie"
                         contenu={

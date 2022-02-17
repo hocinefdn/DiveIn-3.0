@@ -34,6 +34,8 @@ function Profil({
     setNbrLikes,
     setNbrComments,
     setNbrPosts,
+    users,
+    setUsers,
 }) {
     const user = useSelector((state) => state.user)
     const params = useParams()
@@ -118,8 +120,8 @@ function Profil({
         if (!isFollowed) {
             axios
                 .post(`${api}user/follow`, {
-                    follower_id: user.id,
-                    followed_id: params.id,
+                    follower_id: parseInt(user.id),
+                    followed_id: parseInt(params.id),
                 })
                 .then((res) => {
                     setIsFollowed(true)
@@ -130,8 +132,8 @@ function Profil({
         } else {
             axios
                 .post(`${api}user/unfollow`, {
-                    follower_id: user.id,
-                    followed_id: params.id,
+                    follower_id: parseInt(user.id),
+                    followed_id: parseInt(params.id),
                 })
                 .then((res) => {
                     setIsFollowed(false)
@@ -145,8 +147,8 @@ function Profil({
     function getFollow() {
         axios
             .post(`${api}user/getfollow`, {
-                follower_id: user.id,
-                followed_id: params.id,
+                follower_id: parseInt(user.id),
+                followed_id: parseInt(params.id),
             })
             .then((res) => {
                 setIsFollowed(res.data[0].nbr == 1)
@@ -159,7 +161,7 @@ function Profil({
     function getBloque() {
         axios
             .post(`${api}messagerie/getBloque`, {
-                id_user: user.id,
+                id_user: parseInt(user.id),
             })
             .then((res) => {
                 setIsBloque(
@@ -175,11 +177,21 @@ function Profil({
         if (isBloque) {
             axios
                 .post(`${api}messagerie/messagedeblock`, {
-                    id_sender: user.id,
-                    id_reciever: params.id,
+                    id_sender: parseInt(user.id),
+                    id_reciever: parseInt(params.id),
                 })
-                .then((res) => {
-                    setIsBloque(false)
+                .then((response) => {
+                    axios.get(`${api}user/${params.id}`).then((res) => {
+                        console.log(res.data)
+                        setUsers([
+                            ...users,
+                            {
+                                ...res.data[0],
+                                nbr: res.data[0].follower,
+                            },
+                        ])
+                        setIsBloque(false)
+                    })
                 })
                 .catch((err) => {
                     console.log(err)
@@ -187,10 +199,15 @@ function Profil({
         } else {
             axios
                 .post(`${api}messagerie/messageblock`, {
-                    id_sender: user.id,
-                    id_reciever: params.id,
+                    id_sender: parseInt(user.id),
+                    id_reciever: parseInt(params.id),
                 })
                 .then((res) => {
+                    setUsers(
+                        users.filter(
+                            (userFilter) => userFilter.id != parseInt(params.id)
+                        )
+                    )
                     setIsBloque(true)
                 })
                 .catch((err) => {
@@ -314,6 +331,8 @@ function Profil({
                     setNbrComments={setNbrComments}
                     nbrPosts={nbrPosts}
                     setNbrPosts={setNbrPosts}
+                    users={users}
+                    setUsers={setUsers}
                     titrePage={'Profil'}
                     contenu={
                         <div className="toutprofil">

@@ -8,11 +8,10 @@ import { setProp } from '../../redux/actions/userActions'
 
 const axios = require('axios')
 
-function Complete() {
+function Complete({ users, setUsers }) {
     const user = useSelector((state) => state.user)
     const dispatch = useDispatch()
 
-    const [users, setUsers] = useState([])
     const [search, setSearch] = useState('')
     const renderTitle = (title) => (
         <span>
