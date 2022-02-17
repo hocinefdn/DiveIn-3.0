@@ -41,12 +41,13 @@ function ZoneCommentaires({
                         'post commented',
                         user.infoUser,
                         post,
-                        res.data.insertId
+                        res.data[1][0].id
                     )
 
                     const data = {
                         id: res.data[1][0].id, // id de commentaire
                         id_user: user.infoUser.id,
+                        id_post:post.id,
                         lastname: user.infoUser.lastname,
                         firstname: user.infoUser.firstname,
                         image: user.infoUser.image,
