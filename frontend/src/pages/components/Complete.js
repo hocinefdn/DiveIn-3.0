@@ -107,16 +107,17 @@ function Complete() {
     return (
         <AutoComplete
             dropdownClassName="certain-category-search-dropdown"
-            dropdownMatchSelectWidth={310}
-            style={{ width: 310 }}
-            className="md: w-full "
+            dropdownMatchSelectWidth={230}
+            style={{ width: 230 }}
+            className="barre"
             options={options}
         >
-            <Input.Search
+            <Input
                 size="large"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Rechercher sur DiveIn"
+                className="inputrecherche"
             />
         </AutoComplete>
     )
