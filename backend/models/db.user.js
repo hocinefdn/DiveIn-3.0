@@ -12,11 +12,10 @@ diveInDB.getContact = () => {
     })
 }
 
-diveInDB.getUsers = (id) => {
+diveInDB.getUsers = () => {
     return new Promise((resolve, reject) => {
         pool.query(
-            'SELECT DISTINCT firstname,lastname,id,email,COALESCE(count(follower_id),0) as nbr FROM users,follows WHERE follows.followed_id = users.id AND users.id NOT IN (SELECT id_blocked as id FROM blocked_users WHERE id_user = ? UNION SELECT id_user as id FROM blocked_users WHERE id_blocked = ?) GROUP BY users.id ',
-            [id, id],
+            'SELECT DISTINCT firstname,lastname,id,email,COALESCE(count(follower_id),0) as nbr FROM users,follows WHERE follows.followed_id = users.id GROUP BY users.id',
             (err, results) => {
                 if (err) {
                     return reject(err)

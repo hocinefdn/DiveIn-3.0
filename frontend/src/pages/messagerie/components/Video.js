@@ -53,7 +53,7 @@ function Video({ socket, lastMessage }) {
                     navigator.mediaDevices
                         .getDisplayMedia({
                             video: isVideo,
-                            audio: isAudio,
+                            audio: false,
                         })
                         .then((displayStream) =>
                             navigator.mediaDevices
@@ -63,10 +63,11 @@ function Video({ socket, lastMessage }) {
                                 })
                                 .then((audioStream) => {
                                     var outputTracks = []
-                                    if(isAudio){
-                                    outputTracks = outputTracks.concat(
-                                        audioStream.getTracks()
-                                    )}
+                                    if (isAudio) {
+                                        outputTracks = outputTracks.concat(
+                                            audioStream.getTracks()
+                                        )
+                                    }
                                     outputTracks = outputTracks.concat(
                                         displayStream.getTracks()
                                     )

@@ -43,8 +43,6 @@ function Profil({
     setNbrLikes,
     setNbrComments,
     setNbrPosts,
-    users,
-    setUsers,
 }) {
     const user = useSelector((state) => state.user)
     const params = useParams()
@@ -183,33 +181,33 @@ function Profil({
                 console.log(err)
             })
     }
-    // function changeBloque() {
-    //     if (isBloque) {
-    //         axios
-    //             .post(`${api}messagerie/messagedeblock`, {
-    //                 id_sender: user.id,
-    //                 id_reciever: params.id,
-    //             })
-    //             .then((res) => {
-    //                 setIsBloque(false)
-    //             })
-    //             .catch((err) => {
-    //                 console.log(err)
-    //             })
-    //     } else {
-    //         axios
-    //             .post(`${api}messagerie/messageblock`, {
-    //                 id_sender: user.id,
-    //                 id_reciever: params.id,
-    //             })
-    //             .then((res) => {
-    //                 setIsBloque(true)
-    //             })
-    //             .catch((err) => {
-    //                 console.log(err)
-    //             })
-    //     }
-    // }
+    function changeBloque() {
+        if (isBloque) {
+            axios
+                .post(`${api}messagerie/messagedeblock`, {
+                    id_sender: parseInt(user.id),
+                    id_reciever: parseInt(params.id),
+                })
+                .then((response) => {
+                    setIsBloque(false)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        } else {
+            axios
+                .post(`${api}messagerie/messageblock`, {
+                    id_sender: parseInt(user.id),
+                    id_reciever: parseInt(params.id),
+                })
+                .then((res) => {
+                    setIsBloque(true)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        }
+    }
 
     function changeProfilImage() {
         console.log('date')
@@ -301,8 +299,6 @@ function Profil({
                     setNbrComments={setNbrComments}
                     nbrPosts={nbrPosts}
                     setNbrPosts={setNbrPosts}
-                    users={users}
-                    setUsers={setUsers}
                     titrePage={'Profil'}
                     contenu={
                         <div className="toutprofil">
