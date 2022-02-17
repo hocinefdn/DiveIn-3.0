@@ -3,5 +3,3 @@
 
 export const api = 'https://backend.divein-isi.com/'
 export const apiReact = 'https://divein-isi.com/'
-
-// aka itevghid a hocine
