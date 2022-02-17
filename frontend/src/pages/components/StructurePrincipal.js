@@ -146,7 +146,7 @@ function StructurePrincipal({
                         </div>
 
                         <div className=" hidden sm:flex ">
-                            <BarreRecherche />
+                            <Complete />
                         </div>
                     </div>
                     <div className="flex flex-row relative float-right bottom-5 right-3 sm:bottom-16 space-x-2.5 items-center justify-center mt-3.5">

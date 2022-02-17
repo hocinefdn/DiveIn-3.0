@@ -162,7 +162,7 @@ function FilActualite({
                                 array.map((post, index) =>
                                     index % 10 == 0 ? (
                                         <div className="">
-                                            {/* <ListSuggestionTel /> */}
+                                            <ListSuggestionTel />
                                             <Post
                                                 socket={socket}
                                                 lastMessage={lastMessage}
