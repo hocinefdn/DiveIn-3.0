@@ -53,7 +53,7 @@ function ListSuggestionTel() {
                     <div className=" ">
                         <Spin
                             size="large"
-                            className="text-2xl p-5 text-sky-900 bg-green-100 w-20 h-20"
+                            className="text-2xl p-5 text-sky-900"
                         />
                     </div>
                 ) : (
