@@ -1,3 +1,4 @@
+import TextArea from 'antd/lib/input/TextArea'
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -27,22 +28,31 @@ function ContactezNous() {
     }
     return (
         <div className="w-10/12 mr-auto ml-auto p-3">
-            <div className="mb-3">
-                <span className="mr-10">Objet</span>
+            <div className="flex flex-col mb-4">
+                <div className=" mb-4">
+                    <span className="text-sky-600 ">Objet</span>
+                </div>
                 <input
+                    placeholder="Objet"
                     type="text"
                     className="border border-solid w-96 h-10"
                     value={object}
                     onChange={(e) => setObject(e.target.value)}
                 />
             </div>
-            <div>
-                <span className="relative mr-4 bottom-16">Message</span>
-                <textarea
-                    className="h-20 w-96 border border-solid"
-                    value={message}
+            <div className="flex flex-col ">
+                <div className="mb-4">
+                    <span className="text-sky-600 ">Message</span>
+                </div>
+                <TextArea
+                    type="text"
+                    className="p-2 border-solid-2 resize-none rounded-md"
+                    // style={{ height: 50 }}
+                    placeholder="Votre message"
+                    className="w-96 border border-solid"
                     onChange={(e) => setMessage(e.target.value)}
-                ></textarea>
+                    value={message}
+                ></TextArea>
             </div>
             {error}
             <button
