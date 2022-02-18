@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { ArrowLeftOutlined } from '@ant-design/icons'
 import StructurePrincipal from '../../components/StructurePrincipal'
 import BarreDroite from '../../components/BarreDroite'
 import { useParams } from 'react-router-dom'
 import Post from '../../filActualite/components/Post'
 import axios from 'axios'
 import { api } from '../../../constants/constants'
+import { Link } from 'react-router-dom'
 
 function NTFPost({
     socket,
@@ -52,10 +54,21 @@ function NTFPost({
                 setNbrComments={setNbrComments}
                 nbrPosts={nbrPosts}
                 setNbrPosts={setNbrPosts}
-                titrePage="Post"
+                titrePage=""
                 contenu={
                     <>
-                        <div className="">
+                        <div className="flex flex-col">
+                            <div className="">
+                                <Link to={'/notifications'}>
+                                    <div className="pl-1 hover hover:text-sky-500 cursor-pointer">
+                                        <ArrowLeftOutlined
+                                            className="text-lg "
+                                            title=""
+                                        />
+                                    </div>
+                                </Link>
+                            </div>
+
                             {post.map((post) => (
                                 <Post
                                     key={post.id}

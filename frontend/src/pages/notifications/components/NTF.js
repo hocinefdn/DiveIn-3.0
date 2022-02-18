@@ -23,49 +23,46 @@ function NTF({
     setNbrComments,
     setNbrPosts,
 }) {
+    const navigate = useNavigate()
 
-    const navigate = useNavigate();
-
-    function handleClick(){
-
-        if(isComments){
+    function handleClick() {
+        if (isComments) {
             console.log(notf.id_comment)
             axios({
                 method: 'GET',
-                url: `${api}actualite/setCommentSeen/${notf.id_comment}`
+                url: `${api}actualite/setCommentSeen/${notf.id_comment}`,
             })
                 .then(() => {
-                    setNbrComments(nbrComments -1)
-                   navigate('/post/'+ notf.id)
+                    setNbrComments(nbrComments - 1)
+                    navigate('/post/' + notf.id)
                 })
                 .catch((err) => {
                     console.log(err)
                 })
         }
-        if(isLike){
+        if (isLike) {
             axios({
                 method: 'GET',
-                url: `${api}actualite/setLikeSeen/${notf.id_user}/${notf.id}`
+                url: `${api}actualite/setLikeSeen/${notf.id_user}/${notf.id}`,
             })
                 .then(() => {
-                    setNbrLikes(nbrLikes -1)
+                    setNbrLikes(nbrLikes - 1)
 
-                    navigate('/post/'+ notf.id)
-
+                    navigate('/post/' + notf.id)
                 })
                 .catch((err) => {
                     console.log(err)
                 })
         }
-        if(isPost){
-           /* axios({
+        if (isPost) {
+            /* axios({
                 method: 'GET',
                 url: `${api}actualite/setPostSeen/${notf.id_user}/${notf.id}`
             })
                 .then(() => {*/
-                    setNbrPosts(0)
+            setNbrPosts(0)
 
-                    navigate('/post/'+ notf.id)
+            navigate('/post/' + notf.id)
             /*
                 })
                 .catch((err) => {
@@ -75,6 +72,7 @@ function NTF({
     }
     return (
         <>
+            <Link to={'/post/' + notf.id}>
                 <div
                     key={notf.id}
                     className="flex space-x-2  p-1 rounded-xl border border-y-1 hover:bg-sky-100 mt-1 "
@@ -96,6 +94,7 @@ function NTF({
                             />
                         )}
                     </div>
+
                     <div className="flex flex-col">
                         {/* ----------------------------------------- div nom user et type notifications ----------------------- */}
                         <div className="flex flex-row space-x-2">
@@ -130,13 +129,14 @@ function NTF({
                         </div>
                         {/* ----------------------------------------- div contenu de la pub  ----------------------- */}
                         <div className="">
-                            <p className="text-md">{notf.content}</p>
+                            <p className="text-md break-all">{notf.content}</p>
                         </div>
                         <span className="text-xs text-blue-600">
                             {format(notf.date)}
                         </span>
                     </div>
                 </div>
+            </Link>
         </>
     )
 }
