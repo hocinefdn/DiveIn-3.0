@@ -23,6 +23,7 @@ const axios = require('axios')
 function Message({
     group,
     id,
+    imgProfil,
     firstname,
     lastname,
     contenu,
@@ -36,7 +37,7 @@ function Message({
     groupMembers,
 }) {
     /* console.log(dateHeure.slice(0,-5).split('T')[0].concat(' ',dateHeure.slice(0,-5).split('T')[1]))*/
-
+    console.log('img ', image)
     const [isDisplayedDelete, setIsDisplayedDelete] = useState(false)
 
     const user = useSelector((state) => state.user)
@@ -217,11 +218,11 @@ function Message({
     }, [lastMessage])
 
     return (
-        <div className={own ? 'message own' : 'message'}>
+        <div className={own ? 'message own ' : 'message '}>
             {!image ? (
                 <div>
                     {!own && (
-                        <p className="text-xs text-bold text-grey-500">
+                        <p className="text-sm font-bold text-grey-500">
                             {lastname} {firstname}
                         </p>
                     )}
@@ -229,10 +230,10 @@ function Message({
                         className="message_Top"
                         onClick={() => setIsDisplayedDelete(!isDisplayedDelete)}
                     >
-                        {image !== null ? (
+                        {imgProfil !== null ? (
                             <Avatar
                                 className="w-8 h-8 border border-stone-200 hover:opacity-80 img"
-                                src={image}
+                                src={imgProfil}
                                 alt={`${firstname}" "${lastname}`}
                             />
                         ) : (
@@ -244,36 +245,39 @@ function Message({
                         )}
                         {/* <img
                             className="mr-1 w-10 rounded-full img"
-                            src={Photo}
+                            src={image}
                             alt=""
                         /> */}
 
                         <p className="message_text break-all">{contenu}</p>
 
-                        {isDisplayedDelete && own ? (
-                            <DeleteFilled
-                                onClick={deleteMessage}
-                                title="supprimer le message"
-                                className="text-sky-600 cursor-pointer"
-                                style={{ width: '30px', paddingTop: '15px' }}
-                            />
-                        ) : null}
-                        {isDisplayedDelete ? (
-                            <LikeOutlined
-                                onClick={like}
-                                title="liker"
-                                className="text-sky-600 cursor-pointer"
-                                style={{ width: '30px', paddingTop: '15px' }}
-                            />
-                        ) : null}
-                        {isDisplayedDelete ? (
-                            <DislikeOutlined
-                                onClick={dislike}
-                                title="disliker"
-                                className="text-sky-600 cursor-pointer"
-                                style={{ width: '30px', paddingTop: '15px' }}
-                            />
-                        ) : null}
+                        <div className="flex flex-row space-x-2 pt-5 ">
+                            {isDisplayedDelete && own ? (
+                                <DeleteFilled
+                                    onClick={deleteMessage}
+                                    title="supprimer le message"
+                                    className="text-sky-600 cursor-pointer"
+                                />
+                            ) : null}
+                            {isDisplayedDelete ? (
+                                <LikeOutlined
+                                    onClick={like}
+                                    title="liker"
+                                    className="text-sky-600 cursor-pointer"
+                                />
+                            ) : null}
+                            {isDisplayedDelete ? (
+                                <DislikeOutlined
+                                    onClick={dislike}
+                                    title="disliker"
+                                    className="text-sky-600 cursor-pointer"
+                                    // style={{
+                                    //     width: '30px',
+                                    //     paddingTop: '15px',
+                                    // }}
+                                />
+                            ) : null}
+                        </div>
                     </div>
 
                     <div className="message_bottom">{format(dateHeure)}</div>
@@ -287,80 +291,92 @@ function Message({
                     >
                         <source src={image} type="audio/mp3" />
                     </audio>
-                    {isDisplayedDelete && own ? (
-                        <DeleteFilled
-                            onClick={deleteMessage}
-                            title="supprimer le message"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
-                        />
-                    ) : null}
-                    {isDisplayedDelete ? (
-                        <LikeOutlined
-                            onClick={like}
-                            title="liker"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
-                        />
-                    ) : null}
-                    {isDisplayedDelete ? (
-                        <DislikeOutlined
-                            onClick={dislike}
-                            title="disliker"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
-                        />
-                    ) : null}
+                    <div className="flex flex-row space-x-2 pt-5 ">
+                        {isDisplayedDelete && own ? (
+                            <DeleteFilled
+                                onClick={deleteMessage}
+                                title="supprimer le message"
+                                className="text-sky-600 cursor-pointer"
+                            />
+                        ) : null}
+                        {isDisplayedDelete ? (
+                            <LikeOutlined
+                                onClick={like}
+                                title="liker"
+                                className="text-sky-600 cursor-pointer"
+                            />
+                        ) : null}
+                        {isDisplayedDelete ? (
+                            <DislikeOutlined
+                                onClick={dislike}
+                                title="disliker"
+                                className="text-sky-600 cursor-pointer"
+                            />
+                        ) : null}
+                    </div>
                 </div>
             ) : (
-                <div>
-                    <img
-                        src={image}
-                        alt=""
-                        onClick={() => setIsDisplayedDelete(!isDisplayedDelete)}
-                    />
-                    {isDisplayedDelete && own ? (
-                        <DeleteFilled
-                            onClick={deleteMessage}
-                            title="supprimer le message"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
+                <div className="flex flex-col">
+                    <div className="rounded-md   w-96 ">
+                        <img
+                            className="w-full rounded-xl border border-solid"
+                            src={image}
+                            alt=""
+                            onClick={() =>
+                                setIsDisplayedDelete(!isDisplayedDelete)
+                            }
                         />
-                    ) : null}
-                    {isDisplayedDelete ? (
-                        <LikeOutlined
-                            onClick={like}
-                            title="liker"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
-                        />
-                    ) : null}
-                    {isDisplayedDelete ? (
-                        <DislikeOutlined
-                            onClick={dislike}
-                            title="disliker"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
-                        />
-                    ) : null}
+                    </div>
+                    <div className="flex flex-row space-x-2  p-1">
+                        {isDisplayedDelete && own ? (
+                            <DeleteFilled
+                                onClick={deleteMessage}
+                                title="supprimer le message"
+                                className="text-sky-600 cursor-pointer"
+                            />
+                        ) : null}
+                        {isDisplayedDelete ? (
+                            <LikeOutlined
+                                onClick={like}
+                                title="liker"
+                                className="text-sky-600 cursor-pointer"
+                            />
+                        ) : null}
+                        {isDisplayedDelete ? (
+                            <DislikeOutlined
+                                onClick={dislike}
+                                title="disliker"
+                                className="text-sky-600 cursor-pointer"
+                            />
+                        ) : null}
+                    </div>
                 </div>
             )}
+
             {own ? (
-                <div style={{ position: 'relative', marginBottom: '20px' }}>
+                <div
+                    style={{
+                        position: 'relative',
+                    }}
+                >
                     {otherReactionBlue != 0 && (
                         <div
+                            className="flex flex-row"
                             style={{
                                 position: 'absolute',
                                 top: '0px',
                                 right: '0px',
                             }}
                         >
-                            <LikeTwoTone style={{ fontSize: '30px' }} />
-                            <span>{otherReactionBlue}</span>{' '}
+                            <LikeTwoTone style={{ fontSize: '22px' }} />
+                            <span className="font-bold">
+                                {otherReactionBlue}
+                            </span>{' '}
                         </div>
                     )}
                     {otherReactionRed != 0 && (
                         <div
+                            className="flex flex-row"
                             style={{
                                 position: 'absolute',
                                 top: '0px',
@@ -369,28 +385,38 @@ function Message({
                         >
                             <DislikeTwoTone
                                 twoToneColor={'red'}
-                                style={{ fontSize: '30px' }}
+                                style={{ fontSize: '22px' }}
                             />
-                            <span>{otherReactionRed} </span>
+                            <span className="font-bold ">
+                                {otherReactionRed}{' '}
+                            </span>
                         </div>
                     )}
                 </div>
             ) : (
-                <div style={{ position: 'relative', marginBottom: '20px' }}>
+                <div
+                    style={{
+                        position: 'relative',
+                    }}
+                >
                     {otherReactionBlue != 0 && (
                         <div
+                            className="flex flex-row"
                             style={{
                                 position: 'absolute',
                                 top: '0px',
                                 left: '40px',
                             }}
                         >
-                            <LikeTwoTone style={{ fontSize: '30px' }} />
-                            <span>{otherReactionBlue}</span>{' '}
+                            <LikeTwoTone style={{ fontSize: '22px' }} />
+                            <span className="font-bold">
+                                {otherReactionBlue}
+                            </span>{' '}
                         </div>
                     )}
                     {otherReactionRed != 0 && (
                         <div
+                            className="flex flex-row"
                             style={{
                                 position: 'absolute',
                                 top: '0px',
@@ -399,9 +425,11 @@ function Message({
                         >
                             <DislikeTwoTone
                                 twoToneColor={'red'}
-                                style={{ fontSize: '30px' }}
+                                style={{ fontSize: '22px' }}
                             />
-                            <span>{otherReactionRed} </span>
+                            <span className="font-bold">
+                                {otherReactionRed}{' '}
+                            </span>
                         </div>
                     )}
                 </div>
