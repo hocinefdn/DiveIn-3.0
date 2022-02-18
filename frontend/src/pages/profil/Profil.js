@@ -127,33 +127,6 @@ function Profil({
             })
     }
 
-    // function changeFollow() {
-    //     if (!isFollowed) {
-    //         axios
-    //             .post(`${api}user/follow`, {
-    //                 follower_id: user.id,
-    //                 followed_id: params.id,
-    //             })
-    //             .then((res) => {
-    //                 setIsFollowed(true)
-    //             })
-    //             .catch((err) => {
-    //                 console.log(err)
-    //             })
-    //     } else {
-    //         axios
-    //             .post(`${api}user/unfollow`, {
-    //                 follower_id: user.id,
-    //                 followed_id: params.id,
-    //             })
-    //             .then((res) => {
-    //                 setIsFollowed(false)
-    //             })
-    //             .catch((err) => {
-    //                 console.log(err)
-    //             })
-    //     }
-    // }
     function getFollow() {
         axios
             .post(`${api}user/getfollow`, {
@@ -404,32 +377,8 @@ function Profil({
                                                 {user.id != params.id ? (
                                                     <div>
                                                         <button className="w-6 h-13 bg-gray-200 float-right text-2xl mr-3 mt-1 hover:bg-gray-400 flex justify-center items-center rounded-md">
-                                                            {/* <MoreOutlined />
-                                                             */}
                                                             <LongMenu />
                                                         </button>
-                                                        {/* <div className="btn-editerprofil">
-                                                            <button
-                                                                onClick={
-                                                                    changeFollow
-                                                                }
-                                                            >
-                                                                {!isFollowed
-                                                                    ? "S'abonner"
-                                                                    : 'désabonner'}
-                                                            </button>
-                                                        </div>
-                                                        <div className="btn-editerprofil">
-                                                            <button
-                                                                onClick={
-                                                                    changeBloque
-                                                                }
-                                                            >
-                                                                {!isBloque
-                                                                    ? 'bloquer'
-                                                                    : 'débloquer'}
-                                                            </button>
-                                                        </div> */}
                                                     </div>
                                                 ) : (
                                                     <button
@@ -498,13 +447,7 @@ function Profil({
                                                                 params.id
                                                             }
                                                         >
-                                                            <span
-                                                                className="cursor-pointer hover:underline"
-                                                                // onClick={
-                                                                //     ClickSeeFollowed
-                                                                // }
-                                                            >
-                                                                {/* abonnements == followed */}
+                                                            <span className="cursor-pointer hover:underline">
                                                                 {followers}{' '}
                                                                 Abonnements
                                                             </span>

@@ -52,9 +52,7 @@ function Media({ params }) {
                         </div>
                     ) : (
                         <h2 className="m-4 text-md font-medium text-center">
-                            {' '}
-                            Aucun media partager quand il le fera va apparaitre
-                            ici.
+                            Aucun media partager.
                         </h2>
                     )}
                 </>

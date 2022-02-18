@@ -62,7 +62,7 @@ function App() {
     const [nbrPosts, setNbrPosts] = useState(0)
     // const {sc2, deleteSentMessage, delM}=
     //useSocketEvent(socket,'delete message')
-    
+
     const { sc, lastMessage, sendM } = useSocketEvent(
         socket,
         'message recieved'
@@ -106,7 +106,7 @@ function App() {
                     <Routes>
                         <Route path="/inscription" element={<Inscription />} />
                         <Route
-                            path="/mot-de-passe-oblie"
+                            path="/mot-de-passe-oublier"
                             element={<RecupMdp />}
                         />
                         <Route path="*" element={<ConnexionInscription />} />
