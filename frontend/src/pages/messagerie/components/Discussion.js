@@ -341,9 +341,9 @@ function Discussion({
     }, [currentContact])
 
     return (
-        <div className="border border-box width-descussion rounded-md">
-            <div className=" flex flex-row border-b-2  justify-between rounded-t-md">
-                <div className="flex flex-row w-4/12 pl-1 pt-1 pb-1 space-x-2">
+        <div className="border border-box mt-1 rounded-md">
+            <div className=" flex flex-row border-b-2  rounded-t-md w-full">
+                <div className="flex flex-row w-9/12 pl-1 pt-1 pb-1 space-x-2">
                     {contacts[currentContact].image !== null ? (
                         <Avatar
                             className="w-12 h-12 border border-stone-200 hover:opacity-80 "
@@ -374,7 +374,7 @@ function Discussion({
                     </div>
                 </div>
 
-                <div className="icontop-discussion  w-2/12 flex flex-row justify-between  items-center pl-2 pr-2 ">
+                <div className="icontop-discussion  w-3/12 flex flex-row justify-center space-x-2 items-center pl-2 pr-2 ">
                     {currentConnected ? (
                         <div className="iconePhone">
                             <button className="  ">
@@ -406,11 +406,11 @@ function Discussion({
                         className="text-sky-600 cursor-pointer text-xl"
                         // style={{ width: '30px', paddingTop: '10px' }}
                     />
-                    <div className=" iconeOption ">
+                    {/* <div className=" iconeOption ">
                         <button className="">
                             <MoreOutlined className="text-2xl hover:text-sky-500" />
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

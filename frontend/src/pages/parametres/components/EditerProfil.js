@@ -258,7 +258,7 @@ function EditerProfil() {
                         <TextArea
                             className="p-2 border-solid-2 resize-none rounded-md"
                             //showCount
-                            maxLength={250}
+                            maxLength={40}
                             style={{ height: 80 }}
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
@@ -270,7 +270,7 @@ function EditerProfil() {
                             Valider
                         </button>
                     </div>
-                    <div className="text-grey-500">{error}</div>
+                    <div className="text-grey-500 text-lg">{error}</div>
                 </div>
                 {/*
                 <div className="flex flex-row space-x-14 w-full ">

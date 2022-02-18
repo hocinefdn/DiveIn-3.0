@@ -35,7 +35,7 @@ function ListParametres() {
                 openKeys={openKeys}
                 onOpenChange={onOpenChange}
                 // style={{ width: 256 }}
-                className="w-full"
+                className="w-full text-lg"
             >
                 <SubMenu
                     key="editerLeProfil"
@@ -63,7 +63,7 @@ function ListParametres() {
                 <SubMenu
                     key="contactezNous"
                     icon={<QuestionCircleOutlined />}
-                    title="Contactez nous"
+                    title="Contactez-nous"
                 >
                     <ContactezNous />
                 </SubMenu>
