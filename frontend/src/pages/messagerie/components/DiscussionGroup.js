@@ -295,9 +295,9 @@ function Discussion({
     }, [lastMessage])
 
     return (
-        <div className="border border-box width-descussion rounded-md">
-            <div className="flex flex-row border-b-2  justify-between rounded-t-md">
-                <div className="flex flex-row w-9/12 pl-1 pt-1 pb-1 space-x-2">
+        <div className="border border-box mt-1 rounded-md">
+            <div className="flex flex-row border-b-2  w-full rounded-t-md">
+                <div className="flex flex-row w-10/12 pl-1 pt-1 pb-1 space-x-2">
                     <Avatar
                         src={photoGroupe}
                         alt="photo-profil"
@@ -315,7 +315,7 @@ function Discussion({
                         <div className="text-xs">Actif il y a 1h</div>
                     </div>
                 </div>
-                <div className="flex flex-row space-x-2 items-center justify-center">
+                <div className="w-2/12 flex flex-row space-x-2 items-center justify-center">
                     <div className="">
                         <button className="">
                             <VideoCameraOutlined
@@ -328,11 +328,11 @@ function Discussion({
                         </button>
                     </div>
 
-                    <div className="">
+                    {/* <div className="">
                         <button className="">
                             <MoreOutlined className="text-2xl hover:text-sky-500" />
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
@@ -414,7 +414,7 @@ function Discussion({
                 </div>
 
                 <TextareaAutosize
-                    className="w-10/12 p-2 resize-none border border-solid rounded-lg"
+                    className="break-all w-10/12 p-2 resize-none border border-solid rounded-lg"
                     minRows={1}
                     maxRows={2}
                     placeholder="Aa"

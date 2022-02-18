@@ -88,10 +88,10 @@ function Contact({
             })
     }
     function find() {
-        contacts.map((contact,i)=>{
-            if(contact.id == id && !contact.name ){
+        contacts.map((contact, i) => {
+            if (contact.id == id && !contact.name) {
                 setCurrentContact('' + i)
-                dispatch(setProp('currentContact', i)) 
+                dispatch(setProp('currentContact', i))
                 return i
             }
         })
@@ -100,15 +100,14 @@ function Contact({
         //console.log("e",e.target)
         //e.preventDefault()
         setSeen()
-        if(index){
+        if (index) {
             setCurrentContact('' + index)
-            dispatch(setProp('currentContact', index)) 
-        }else{
+            dispatch(setProp('currentContact', index))
+        } else {
             find()
             /*setCurrentContact('' + index)
             dispatch(setProp('currentContact', index)) */
         }
-       
 
         setAfficherContacts(false)
         setCurrentConnected(isConnected)
@@ -191,14 +190,19 @@ function Contact({
     return (
         <List.Item>
             <List.Item.Meta
-                avatar={<Avatar src={image ? image : photo_default} />}
+                avatar={
+                    <Avatar
+                        className="w-10 h-10 border border-stone-200 hover:opacity-80 img"
+                        src={image ? image : photo_default}
+                    />
+                }
                 title={
-                    <div>
+                    <div className="flex flex-row space-x-2 ">
                         <a
                             href="#"
                             id={index}
                             onClick={handleClick}
-                            className="relative"
+                            className="relative font-bold"
                         >
                             {lastname} {firstname}{' '}
                             {isConnected ? (
@@ -206,28 +210,31 @@ function Contact({
                                 <Connecter />
                             ) : null}{' '}
                         </a>
-                    </div>
-                }
-                description={
-                    <div style={{ display: 'flex' }}>
-                        <Button type="default">
-                            {!inGroup ? (
-                                <UsergroupAddOutlined onClick={addToGroup} />
-                            ) : (
-                                <UsergroupDeleteOutlined
-                                    onClick={removeFromGroup}
-                                />
-                            )}
-                        </Button>
-                        <button style={{ marginLeft: 30 }}>
+                        <button className="pl-4 p-1 ">
                             <NotificationBadge
+                                title="Messages"
                                 count={notSeen}
                                 effect={Effect.SCALE}
-                                className="mt-4"
+                                className=""
                                 style={{ fontSize: '9px' }}
                             />
                         </button>
                     </div>
+                }
+                description={
+                    <Button type="default">
+                        {!inGroup ? (
+                            <UsergroupAddOutlined
+                                title="Ajouter au groupe"
+                                onClick={addToGroup}
+                            />
+                        ) : (
+                            <UsergroupDeleteOutlined
+                                title="Retirer du groupe"
+                                onClick={removeFromGroup}
+                            />
+                        )}
+                    </Button>
                 }
             />
         </List.Item>

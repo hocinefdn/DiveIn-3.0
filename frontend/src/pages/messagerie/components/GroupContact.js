@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { api } from '../../../constants/constants'
 import { setProp } from '../../../redux/actions/userActions'
 import { Button } from 'antd'
-import { DeleteFilled } from '@ant-design/icons'
+import { DeleteFilled, ExportOutlined } from '@ant-design/icons'
+import photoGroupe from '../../../assets/images/photo_groupe.jpg'
 const axios = require('axios')
 
 function GroupContact({
@@ -22,10 +23,10 @@ function GroupContact({
     const dispatch = useDispatch()
 
     function find() {
-        contacts.map((contact,i)=>{
-            if(contact.id == id && contact.name ){
+        contacts.map((contact, i) => {
+            if (contact.id == id && contact.name) {
                 setCurrentContact('' + i)
-                dispatch(setProp('currentContact', i)) 
+                dispatch(setProp('currentContact', i))
                 return i
             }
         })
@@ -33,10 +34,10 @@ function GroupContact({
     function handleClick(e) {
         //console.log("e",e.target)
         //e.preventDefault()
-        if(index){
-        setCurrentContact('' + index)
-        dispatch(setProp('currentContact', index))
-        }else{
+        if (index) {
+            setCurrentContact('' + index)
+            dispatch(setProp('currentContact', index))
+        } else {
             find()
         }
     }
@@ -60,21 +61,41 @@ function GroupContact({
     return (
         <List.Item>
             <List.Item.Meta
-                avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                avatar={
+                    <Avatar
+                        className="w-10 h-10 border border-stone-200 hover:opacity-80 img"
+                        src={photoGroupe}
+                    />
+                }
                 title={
-                    <a href="#" id={index} onClick={handleClick}>
-                        {name} <p>groupe</p>
+                    <a
+                        className="flex flex-row space-x-1"
+                        href="#"
+                        id={index}
+                        onClick={handleClick}
+                    >
+                        <p>groupe: </p>
+                        <span className="font-bold">{name}</span>
                     </a>
                 }
                 description={
-                    <div>
-                        <DeleteFilled
+                    <div className="space-x-1 flex flex-row">
+                        <ExportOutlined
                             onClick={leaveGroup}
                             title="quiter le groupe"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
+                            className="text-sky-600 text-lg cursor-pointer"
+                            // style={{ width: '30px' }}
                         />
+                        <span className="text-black p-2 text-xs">
+                            quiter le groupe
+                        </span>
                     </div>
+                    // <DeleteFilled
+                    //     onClick={leaveGroup}
+                    //     title="quiter le groupe"
+                    //     className="text-sky-600 cursor-pointer"
+                    //     style={{ width: '30px' }}
+                    // />
                 }
             />
         </List.Item>

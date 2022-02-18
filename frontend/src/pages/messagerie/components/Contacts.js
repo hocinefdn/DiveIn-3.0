@@ -133,7 +133,9 @@ function Contacts({
                         </Button>
                     </div>
                 ) : (
-                    ''
+                    <div className="items-center p-1">
+                        <span className="text-medium">Créer un groupe</span>
+                    </div>
                 )}
             </div>
             {searchData ? (
@@ -143,6 +145,7 @@ function Contacts({
                     renderItem={(item, index) =>
                         !item.name ? (
                             <Contact
+                                afficheInput={afficheInput}
                                 setGroupMembers={setGroupMembers}
                                 groupMembers={groupMembers}
                                 setCurrentContact={setCurrentContact}

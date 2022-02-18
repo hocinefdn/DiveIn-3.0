@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/message.css'
 import Photo from '../../../assets/images/profil.png'
+
+import photoProfil_vide from '../../../assets/images/image_profil_vide.png'
+import { Avatar } from 'antd'
 import { format } from 'timeago.js'
-import { useState } from 'react'
 import { api, apiReact } from '../../../constants/constants'
 import moment from 'moment'
 import { io } from 'socket.io-client'
@@ -219,7 +221,7 @@ function Message({
             {!image ? (
                 <div>
                     {!own && (
-                        <p>
+                        <p className="text-xs text-bold text-grey-500">
                             {lastname} {firstname}
                         </p>
                     )}
@@ -227,13 +229,27 @@ function Message({
                         className="message_Top"
                         onClick={() => setIsDisplayedDelete(!isDisplayedDelete)}
                     >
-                        <img
+                        {image !== null ? (
+                            <Avatar
+                                className="w-8 h-8 border border-stone-200 hover:opacity-80 img"
+                                src={image}
+                                alt={`${firstname}" "${lastname}`}
+                            />
+                        ) : (
+                            <Avatar
+                                className="w-8 h-8 border border-stone-200 hover:opacity-80 img"
+                                src={photoProfil_vide}
+                                alt={`${firstname}" "${lastname}`}
+                            />
+                        )}
+                        {/* <img
                             className="mr-1 w-10 rounded-full img"
                             src={Photo}
                             alt=""
-                        />
+                        /> */}
 
-                        <p className="message_text">{contenu}</p>
+                        <p className="message_text break-all">{contenu}</p>
+
                         {isDisplayedDelete && own ? (
                             <DeleteFilled
                                 onClick={deleteMessage}
