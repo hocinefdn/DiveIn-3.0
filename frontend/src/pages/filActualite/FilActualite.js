@@ -161,7 +161,7 @@ function FilActualite({
                                 </div>
                             ) : !isEmpty(array[0]) ? (
                                 array.map((post, index) =>
-                                    index % 10 == 0 ? (
+                                    index % 10 == 5 ? (
                                         <div className="">
                                             <ListSuggestionTel />
                                             <Post

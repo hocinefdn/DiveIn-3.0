@@ -74,9 +74,7 @@ function Redives({ params, socket, lastMessage }) {
                         })
                     ) : (
                         <h2 className="m-4 text-md font-medium text-center">
-                            {' '}
-                            Aucun post rediver quand il le fera va apparaitre
-                            ici.
+                            Aucun post rediver.
                         </h2>
                     )}
                 </>

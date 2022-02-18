@@ -72,7 +72,7 @@ function MesLikes({ params, socket, lastMessage }) {
                     ) : (
                         <h2 className="m-4 text-md font-medium text-center">
                             {' '}
-                            Aucun post liker quand il le fera va apparaitre ici.
+                            Aucun post liker.
                         </h2>
                     )}
                 </>

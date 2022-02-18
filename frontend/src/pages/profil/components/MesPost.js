@@ -82,9 +82,7 @@ function MesPost({ params, socket, lastMessage }) {
                         })
                     ) : (
                         <h2 className="m-4 text-md font-medium text-center">
-                            {' '}
-                            Aucun post partager quand il le fera va apparaitre
-                            ici.{' '}
+                            Aucun post partager ici.
                         </h2>
                     )}
                 </>

@@ -85,7 +85,7 @@ function Connexion() {
                         {/* <a href={`${apiReact}mot-de-passe-oblie`}>
                             Mot de passe oublier ?
                         </a> */}
-                        <Link to={`mot-de-passe-oublie`}>
+                        <Link to={`mot-de-passe-oublier`}>
                             Mot de passe oublier ?
                         </Link>
                     </div>

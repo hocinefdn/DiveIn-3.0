@@ -117,3 +117,5 @@ function LongMenu({ changeBloque }, { changeFollow }) {
         </div>
     )
 }
+
+export default LongMenu
