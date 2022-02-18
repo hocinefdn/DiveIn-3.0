@@ -128,7 +128,7 @@ function StructurePrincipal({
                 >
                     <div className="flex flex-row justify-center ">
                         <div className="absolute mt-2.5 left-5 flex flex-row ">
-                            <TemporaryDrawer />
+                            <TemporaryDrawer className="text-white font-bold" />
                             <Link to="/home/">
                                 <img
                                     src={logo}
@@ -157,10 +157,10 @@ function StructurePrincipal({
                                     : setAfficherSearch(true)
                             }}
                         >
-                            <SearchOutlined className="text-2xl text-white font-bold" />
+                            <SearchOutlined className="w-8 h-8 bg-gray-100 border rounded-lg hover:text-blue-700 hover:bg-gray-200 text-xl " />
                         </button>
-                        <Link to="/messagerie" className="ml-0">
-                            <button>
+                        <Link to="/messagerie">
+                            <button className="mr-1">
                                 {
                                     <NotificationBadge
                                         count={notificationsMessages}
@@ -204,7 +204,7 @@ function StructurePrincipal({
                         <Content className="relative hauteur w-9/12">
                             <div className="bg-white fixed z-50 right-0 left-0 flex justify-center sm:hidden">
                                 {afficherSearch ? (
-                                    <Complete className="flex items-center justify-center " />
+                                    <Complete className="flex items-center justify-center" />
                                 ) : (
                                     ''
                                 )}

@@ -25,7 +25,7 @@ function Inscription() {
                 <div>
                     <p>Un lien pour activer votre compte vous a été envoyé.</p>
                     <p>
-                        Consultez votre Boîte de réception pour finaliser
+                        Consultez votre boîte de réception pour finaliser
                         l'inscription et rejoindre la communauté DiveIn!
                     </p>
                     <p className="text-red-500">
