@@ -131,14 +131,22 @@ function EditerProfil() {
                     </div>
                     {/*  buttoun envoyer */}
                     <div className="w-10/11 m-auto">
-                        <button
-                            className="p-3 bg-sky-600 mt-3 float-right mr-10 text-white rounded-md hover:bg-sky-500 "
-                            onClick={submitEdit}
-                        >
-                            Valider
-                        </button>
+                        {nom || prenom || date || bio ? (
+                            <button
+                                className="p-3 bg-sky-600 mt-3 float-right mr-10 text-white rounded-md hover:bg-sky-500 "
+                                onClick={submitEdit}
+                            >
+                                Valider
+                            </button>
+                        ) : (
+                            <button className="p-3 bg-sky-500 mt-3 float-right mr-10 text-white rounded-md hover:bg-sky-500 ">
+                                Valider
+                            </button>
+                        )}
                     </div>
-                    <div className="text-grey-500 text-lg">{error}</div>
+                    <div className="text-grey-500 text-md text-center pt-2 pb-4">
+                        {error}
+                    </div>
                 </div>
             </div>
         </div>
