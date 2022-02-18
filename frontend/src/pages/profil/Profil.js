@@ -30,6 +30,8 @@ import LongMenu from './components/LongMenu'
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto'
 import StandardImageList from './components/StandardImageList'
 import { Grid } from '@mui/material'
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
+import CakeIcon from '@mui/icons-material/Cake'
 
 const axios = require('axios')
 function Profil({
@@ -371,7 +373,7 @@ function Profil({
                                                         <label htmlFor="profil">
                                                             <Grid item>
                                                                 <Tooltip
-                                                                    title="changer la photo de profile"
+                                                                    title="changer la photo de profil"
                                                                     placement="right"
                                                                 >
                                                                     <AddAPhotoIcon
@@ -439,18 +441,34 @@ function Profil({
                                                 )}
 
                                                 <div className="coordonées">
-                                                    <span>
-                                                        <CalendarOutlined />A
-                                                        rejoint divein{' '}
-                                                        {format(date)}
+                                                    <span className="flex flex-row items-center h-7 ">
+                                                        <div className="pr-2">
+                                                            <CalendarTodayIcon />
+                                                        </div>
+                                                        <div className="pt-0.5">
+                                                            A rejoint DiveIn{' '}
+                                                            {format(date)}
+                                                        </div>
                                                     </span>
 
-                                                    <span>
-                                                        {`${moment(
-                                                            new Date(birthday)
-                                                        ).format(
-                                                            'DD MMM YYYY'
-                                                        )} `}
+                                                    <span className="flex flex-row items-center h-7">
+                                                        <div className="pr-2">
+                                                            <CakeIcon />
+                                                        </div>
+                                                        <div className="pt-1.5">
+                                                            {' '}
+                                                            <span className="pr-1">
+                                                                {' '}
+                                                                Né(e) le
+                                                            </span>
+                                                            {`${moment(
+                                                                new Date(
+                                                                    birthday
+                                                                )
+                                                            ).format(
+                                                                'DD MMM YYYY'
+                                                            )} `}
+                                                        </div>
                                                     </span>
 
                                                     <div className="abonn">
@@ -462,7 +480,7 @@ function Profil({
                                                             }
                                                         >
                                                             <span
-                                                                className="cursor-pointer"
+                                                                className="cursor-pointer hover:underline"
                                                                 // onClick={
                                                                 //     ClickSeeFollowers
                                                                 // }
@@ -481,7 +499,7 @@ function Profil({
                                                             }
                                                         >
                                                             <span
-                                                                className="cursor-pointer"
+                                                                className="cursor-pointer hover:underline"
                                                                 // onClick={
                                                                 //     ClickSeeFollowed
                                                                 // }
@@ -498,7 +516,7 @@ function Profil({
                                                 <h4 className="profileInfoName">
                                                     {`${firstName} ${lastName}`}
                                                 </h4>
-                                                <div className="profileInfoDesc">
+                                                <div className="profileInfoDesc mb-10">
                                                     {biographie}
                                                 </div>
                                             </div>
@@ -520,7 +538,7 @@ function Profil({
                                         }
                                         onClick={ClickMesPost}
                                     >
-                                        DiveIn
+                                        Dives
                                     </button>
                                 </div>
 

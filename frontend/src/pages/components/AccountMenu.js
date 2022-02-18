@@ -121,6 +121,7 @@ export default function AccountMenu() {
                             />
                         )}
                         Profil
+                        {/* <Avatar /> Profile */}
                     </MenuItem>
                 </Link>
 
@@ -130,14 +131,14 @@ export default function AccountMenu() {
                     <ListItemIcon>
                         <Settings fontSize="small" />
                     </ListItemIcon>
-                    Settings
+                    Paramètres
                 </MenuItem>
 
                 <MenuItem onClick={confirmation}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
-                    Logout
+                    Déconnexion
                 </MenuItem>
             </Menu>
         </React.Fragment>

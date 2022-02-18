@@ -65,6 +65,11 @@
         background-color: white;
     }
 }
+@media screen and (min-width: 740px) {
+    .listeSuggestTel {
+        display: none;
+    }
+}
 @media only screen and (min-width: 992px) {
     .leftDrawer {
         display: none;

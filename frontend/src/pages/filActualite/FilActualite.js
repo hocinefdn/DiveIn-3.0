@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { io } from 'socket.io-client'
 import { api, apiReact } from '../../constants/constants'
 import ListSuggestionTel from '../components/ListSuggestionTel'
+import './css/card.css'
 function FilActualite({
     modal,
     setModal,

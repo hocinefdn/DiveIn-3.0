@@ -5,6 +5,7 @@ import { api } from '../../constants/constants'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { setProp } from '../../redux/actions/userActions'
+import SearchIcon from '@mui/icons-material/Search'
 
 const axios = require('axios')
 
@@ -25,7 +26,7 @@ function Complete() {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                more
+                plus
             </a>
         </span>
     )
@@ -116,7 +117,7 @@ function Complete() {
                 size="large"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Rechercher sur DiveIn"
+                placeholder="Rechercher sur DiveIn "
                 className="inputrecherche"
             />
         </AutoComplete>
