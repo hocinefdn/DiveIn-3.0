@@ -160,6 +160,7 @@ function Contacts({
                                 setNotificationsMessages={
                                     setNotificationsMessages
                                 }
+                                setAfficherContacts={setAfficherContacts}
                             />
                         ) : (
                             <GroupContact
@@ -168,6 +169,7 @@ function Contacts({
                                 contacts={contacts}
                                 founder={item.id_user}
                                 setCurrentContact={setCurrentContact}
+                                setAfficherContacts={setAfficherContacts}
                             />
                         )
                     }
@@ -207,6 +209,7 @@ function Contacts({
                                 setCurrentContact={setCurrentContact}
                                 contacts={contacts}
                                 setContacts={setContacts}
+                                setAfficherContacts={setAfficherContacts}
                             />
                         )
                     }

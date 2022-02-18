@@ -92,7 +92,6 @@ function Messagerie({
 
     function contactVisibleTel() {
         if (window.screen.width > 741) return 0
-        console.log(afficherContacts)
 
         if (afficherContacts) {
             document.getElementById('droite').style.display = 'block'

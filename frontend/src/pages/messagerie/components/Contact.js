@@ -97,16 +97,12 @@ function Contact({
         })
     }
     function handleClick(e) {
-        //console.log("e",e.target)
-        //e.preventDefault()
         setSeen()
         if (index) {
             setCurrentContact('' + index)
             dispatch(setProp('currentContact', index))
         } else {
             find()
-            /*setCurrentContact('' + index)
-            dispatch(setProp('currentContact', index)) */
         }
 
         setAfficherContacts(false)
@@ -121,32 +117,7 @@ function Contact({
         setGroupMembers(groupMembers.filter((groupMember) => groupMember != id))
         setInGroup(false)
     }
-    /*
-    socket.on(
-        'message notified',
-        (message, id_sender, id_reciever, date, image) => {
-            if(id_sender == id)
-            {
-            setNotSeen(state => state+1); 
-            }
-        })
-        */
-    /*
-        
-        socket.on("connected-user", (connected)=>{
-            setIsConnected(connected)
-        })
-        socket.on("user-connected", id_user =>{
-            if(id_user === id){
-                setIsConnected(true)
-            }
-        })
-        socket.on("user-disconected" , (id_user) =>{
-            if(id_user === id){
-                setIsConnected(false)
-            }
-        })
-        */
+
     useEffect(() => {
         if (socket) socket.emit('get-connected-user', id)
 
