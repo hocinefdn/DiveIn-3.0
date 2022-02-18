@@ -12,9 +12,10 @@ import PersonAdd from '@mui/icons-material/PersonAdd'
 import Settings from '@mui/icons-material/Settings'
 import Logout from '@mui/icons-material/Logout'
 import { Link, useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import photoProfil_vide from '../../assets/images/image_profil_vide.png'
-
+import { useCookies } from 'react-cookie'
+import { setProp } from '../../redux/actions/userActions'
+import { useDispatch, useSelector } from 'react-redux'
 export default function AccountMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null)
     const open = Boolean(anchorEl)
@@ -30,10 +31,26 @@ export default function AccountMenu() {
         modal.classList.toggle('show')
     }
 
-    const user = useSelector((state) => state.user)
     const Navigate = useNavigate()
     const allerparametre = () => {
         Navigate('../parametres')
+    }
+    const [cookies, setCookie, removeCookie] = useCookies(['jwt'])
+    const navigate = useNavigate()
+    const user = useSelector((state) => state.user)
+    const dispatch = useDispatch()
+
+    const deconnexion = () => {
+        removeCookie()
+        localStorage.setItem('id_user', '')
+        dispatch(setProp('id', ''))
+        dispatch(setProp('isLogged', false))
+        dispatch(setProp('token', ''))
+        window.location = '/'
+    }
+
+    const closeAlert = () => {
+        document.getElementById('alerrrt').classList.toggle('show')
     }
     return (
         <React.Fragment>
@@ -134,7 +151,7 @@ export default function AccountMenu() {
                     Paramètres
                 </MenuItem>
 
-                <MenuItem onClick={confirmation}>
+                <MenuItem onClick={deconnexion}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
