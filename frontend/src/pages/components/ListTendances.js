@@ -53,10 +53,10 @@ function ListTendances() {
     }, [])
 
     return (
-        <div>
+        <div className=" p-1">
             {isLoading ? (
-                <div className=" text-center  ">
-                    <Spin size="large" className="text-2xl p-5 text-sky-900" />
+                <div className="text-center">
+                    <Spin size="large" className="text-2xl p-5 " />
                 </div>
             ) : (
                 <>
@@ -64,7 +64,7 @@ function ListTendances() {
                         return (
                             <Link to="/tendances">
                                 <div
-                                    className=" mt-1 p-1 hover:bg-sky-200"
+                                    className=" mt-1 p-2 hover:bg-sky-200 rounded-md"
                                     key={td.id}
                                 >
                                     <a

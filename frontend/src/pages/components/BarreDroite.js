@@ -28,13 +28,13 @@ function BarreDroite() {
     return (
         <div className=" fixed bg-white h-full w-64  border border-l-1 pt-16 space-y-5 p-1 ">
             {/* div de tendances */}
-            <div className=" rounded-md pt-2">
+            <div className="p-2 bg-sky-100 rounded-md">
                 <span className="text-xl font-bold">Tendances</span>
                 <ListTendances />
             </div>
 
             {/* div suggestion */}
-            <div className="rounded-md ">
+            <div className="p-2 bg-sky-100 rounded-md">
                 <span className="text-xl font-bold">Suggestion</span>
                 <ListSuggestion />
             </div>
