@@ -18,6 +18,7 @@ function GroupContact({
     setCurrentContact,
     contacts,
     setContacts,
+    setAfficherContacts,
 }) {
     const user = useSelector((state) => state.user)
     const dispatch = useDispatch()
@@ -32,14 +33,15 @@ function GroupContact({
         })
     }
     function handleClick(e) {
-        //console.log("e",e.target)
-        //e.preventDefault()
+        console.log('zzz')
+        setAfficherContacts(false)
         if (index) {
             setCurrentContact('' + index)
             dispatch(setProp('currentContact', index))
         } else {
             find()
         }
+        // setAfficherContacts(false)
     }
 
     function leaveGroup() {
@@ -90,12 +92,6 @@ function GroupContact({
                             quiter le groupe
                         </span>
                     </div>
-                    // <DeleteFilled
-                    //     onClick={leaveGroup}
-                    //     title="quiter le groupe"
-                    //     className="text-sky-600 cursor-pointer"
-                    //     style={{ width: '30px' }}
-                    // />
                 }
             />
         </List.Item>
