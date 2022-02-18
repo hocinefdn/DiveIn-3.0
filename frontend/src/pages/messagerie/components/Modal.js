@@ -22,6 +22,33 @@ function MyModal({ modal, setModal }) {
         setIsModalVisible(modal.isVisible)
     }, [modal.isVisible])
 
+    // const ClickToDelete = () => {
+    //     setIsModalDeleteVisible(true)
+    // }
+
+    // const handleDeleteOk = () => {
+    //     setIsModalDeleteVisible(false)
+    // }
+
+    // const handleDeleteCancel = () => {
+    //     setIsModalDeleteVisible(false)
+    // }
+
+    // const SupprimerPost = (e) => {
+    //     e.preventDefault()
+    //     setIsDeleteLoading(true)
+    //     setTimeout(() => {
+    //         SUPPRIMER_POST()
+    //         setIsDeleteLoading(false)
+    //         setIsModalDeleteVisible(false)
+    //     }, 2000)
+    // }
+
+    // const annuler = (e) => {
+    //     e.preventDefault()
+    //     setIsModalDeleteVisible(false)
+    // }
+
     const showModal = () => {
         setIsModalVisible(true)
     }
