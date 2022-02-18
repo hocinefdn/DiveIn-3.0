@@ -48,64 +48,69 @@ function ListSuggestionTel() {
 
     return (
         <div className="flex flex-col mt-3">
-            <div className="flex flex-row mr-auto ml-auto listeSuggestTel ">
-                {isLoading ? (
-                    <div className=" ">
-                        <Spin
-                            size="large"
-                            className="text-2xl p-5 text-sky-900"
-                        />
-                    </div>
-                ) : (
-                    <>
-                        {userSuggestion.map((user) => (
-                            <div
-                                key={user.id}
-                                className="flex flex-col p-2 border border-y-1 hover:bg-sky-100 m-1 rounded-md shadow-xl"
-                            >
-                                <div className="text-center ">
-                                    {/* --------------------  afficher l'image profil user sinon null mettre par defaut  */}
-                                    {user.image !== null ? (
-                                        <Avatar
-                                            src={user.image}
-                                            className="w-12 h-12 border border-stone-200 hover:opacity-80 "
-                                            alt="user Profil"
-                                        />
-                                    ) : (
-                                        <Avatar
-                                            src={photoProfil_vide}
-                                            className="w-12 h-12 border border-stone-200 hover:opacity-80 "
-                                            alt="user Profil"
-                                        />
-                                    )}
-                                </div>
-                                {/* ----------------------------------------- div nom user----------------------- */}
-                                <div className="text-center">
-                                    <Link to={'/profil/' + user.id}>
-                                        <a
-                                            className="font-bold breaks-word"
-                                            // onClick={SeeProfil}
-                                        >
-                                            {user.firstname}
-                                            <span> </span> {user.lastname}
-                                        </a>
-                                    </Link>
-                                </div>
+            <div className="flex flex-col  p-1 rounded-md mr-auto ml-auto listeSuggestTel width-card">
+                <div className="text-md font-bold">
+                    Vous connaissez peut être
+                </div>
+                <div className="flex flex-row mr-auto ml-auto">
+                    {isLoading ? (
+                        <div className=" ">
+                            <Spin
+                                size="large"
+                                className="text-2xl p-5 text-sky-900"
+                            />
+                        </div>
+                    ) : (
+                        <>
+                            {userSuggestion.map((user) => (
+                                <div
+                                    key={user.id}
+                                    className="flex flex-col p-2 border border-y-1 hover:bg-sky-100 m-1 rounded-md shadow-xl"
+                                >
+                                    <div className="text-center ">
+                                        {/* --------------------  afficher l'image profil user sinon null mettre par defaut  */}
+                                        {user.image !== null ? (
+                                            <Avatar
+                                                src={user.image}
+                                                className="w-12 h-12 border border-stone-200 hover:opacity-80 "
+                                                alt="user Profil"
+                                            />
+                                        ) : (
+                                            <Avatar
+                                                src={photoProfil_vide}
+                                                className="w-12 h-12 border border-stone-200 hover:opacity-80 "
+                                                alt="user Profil"
+                                            />
+                                        )}
+                                    </div>
+                                    {/* ----------------------------------------- div nom user----------------------- */}
+                                    <div className="text-center">
+                                        <Link to={'/profil/' + user.id}>
+                                            <a
+                                                className="font-bold breaks-word"
+                                                // onClick={SeeProfil}
+                                            >
+                                                {user.firstname}
+                                                <span> </span> {user.lastname}
+                                            </a>
+                                        </Link>
+                                    </div>
 
-                                {/* -----------------------------------------  button suivre -------------------------- */}
-                                <div className="m-auto ">
-                                    <FollowUnfollow
-                                        follower={user.id}
-                                        // isFollowed={isFollowed}
-                                        // setIsFollowed={setIsFollowed}
-                                        // isFollower={isFollower}
-                                        // setIsFollower={setIsFollower}
-                                    />
+                                    {/* -----------------------------------------  button suivre -------------------------- */}
+                                    <div className="m-auto ">
+                                        <FollowUnfollow
+                                            follower={user.id}
+                                            // isFollowed={isFollowed}
+                                            // setIsFollowed={setIsFollowed}
+                                            // isFollower={isFollower}
+                                            // setIsFollower={setIsFollower}
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </>
-                )}
+                            ))}
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     )
