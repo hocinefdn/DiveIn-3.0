@@ -10,8 +10,8 @@
     /* background-color: rgb(55, 81, 114); */
     /* background-color: #386299; */
     background: #0096c7;
-    border-bottom: solid;
-    border-color: rgb(228, 222, 222);
+    border-bottom: 2px solid;
+    border-color: rgb(241, 240, 240);
 }
 
 .border-menu {
