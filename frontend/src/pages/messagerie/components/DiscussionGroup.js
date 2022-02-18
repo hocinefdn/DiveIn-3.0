@@ -312,7 +312,7 @@ function Discussion({
                                 </span>
                             </div>
                         ) : null}
-                        <div className="text-xs">Actif il y a 1h</div>
+                        {/* <div className="text-xs">Actif il y a 1h</div> */}
                     </div>
                 </div>
                 <div className="w-2/12 flex flex-row space-x-2 items-center justify-center">
@@ -368,6 +368,7 @@ function Discussion({
                                 <MessageGroup
                                     group={contacts[currentContact].id}
                                     id={item.id}
+                                    imgProfil={item.userImage}
                                     lastname={item.lastname}
                                     firstname={item.firstname}
                                     contenu={item.message}

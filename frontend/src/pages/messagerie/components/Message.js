@@ -186,46 +186,44 @@ function Message({
                         )}
 
                         <p
-                            className="message_text"
+                            className="message_text break-all"
                             onClick={() =>
                                 setIsDisplayedDelete(!isDisplayedDelete)
                             }
                         >
                             {contenu}
                         </p>
-
-                        {isDisplayedDelete && own ? (
-                            <DeleteFilled
-                                onClick={deleteMessage}
-                                title="supprimer le message"
-                                className="text-sky-600 cursor-pointer"
-                                style={{ width: '30px', paddingTop: '15px' }}
-                            />
-                        ) : null}
-                        {isDisplayedDelete ? (
-                            <LikeOutlined
-                                onClick={() => {
-                                    ownReaction != 1
-                                        ? setOwnReaction(1)
-                                        : setOwnReaction(0)
-                                }}
-                                title="liker"
-                                className="text-sky-600 cursor-pointer"
-                                style={{ width: '30px', paddingTop: '15px' }}
-                            />
-                        ) : null}
-                        {isDisplayedDelete ? (
-                            <DislikeOutlined
-                                onClick={() => {
-                                    ownReaction != 2
-                                        ? setOwnReaction(2)
-                                        : setOwnReaction(0)
-                                }}
-                                title="disliker"
-                                className="text-sky-600 cursor-pointer"
-                                style={{ width: '30px', paddingTop: '15px' }}
-                            />
-                        ) : null}
+                        <div className="flex flex-row space-x-2 pt-5 ">
+                            {isDisplayedDelete && own ? (
+                                <DeleteFilled
+                                    onClick={deleteMessage}
+                                    title="supprimer le message"
+                                    className="text-sky-600 cursor-pointer"
+                                />
+                            ) : null}
+                            {isDisplayedDelete ? (
+                                <LikeOutlined
+                                    onClick={() => {
+                                        ownReaction != 1
+                                            ? setOwnReaction(1)
+                                            : setOwnReaction(0)
+                                    }}
+                                    title="liker"
+                                    className="text-sky-600 cursor-pointer"
+                                />
+                            ) : null}
+                            {isDisplayedDelete ? (
+                                <DislikeOutlined
+                                    onClick={() => {
+                                        ownReaction != 2
+                                            ? setOwnReaction(2)
+                                            : setOwnReaction(0)
+                                    }}
+                                    title="disliker"
+                                    className="text-sky-600 cursor-pointer"
+                                />
+                            ) : null}
+                        </div>
                     </div>
 
                     <div className="message_bottom">{format(dateHeure)}</div>
@@ -298,139 +296,140 @@ function Message({
                             </div>
                         </div>
                     )}
-
-                    {isDisplayedDelete && own ? (
-                        <DeleteFilled
-                            onClick={deleteMessage}
-                            title="supprimer le message"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
+                    <div className="flex flex-row space-x-2 pt-5 ">
+                        {isDisplayedDelete && own ? (
+                            <DeleteFilled
+                                onClick={deleteMessage}
+                                title="supprimer le message"
+                                className="text-sky-600 cursor-pointer"
+                            />
+                        ) : null}
+                        {isDisplayedDelete ? (
+                            <LikeOutlined
+                                onClick={() => {
+                                    ownReaction != 1
+                                        ? setOwnReaction(1)
+                                        : setOwnReaction(0)
+                                }}
+                                title="liker"
+                                className="text-sky-600 cursor-pointer"
+                            />
+                        ) : null}
+                        {isDisplayedDelete ? (
+                            <DislikeOutlined
+                                onClick={() => {
+                                    ownReaction != 2
+                                        ? setOwnReaction(2)
+                                        : setOwnReaction(0)
+                                }}
+                                title="disliker"
+                                className="text-sky-600 cursor-pointer"
+                            />
+                        ) : null}
+                    </div>
+                </div>
+            ) : (
+                <div className="flex flex-col ">
+                    <div className="rounded-md   w-96 ">
+                        <img
+                            className="w-full rounded-xl border border-solid"
+                            src={image}
+                            alt=""
+                            onClick={() =>
+                                setIsDisplayedDelete(!isDisplayedDelete)
+                            }
                         />
-                    ) : null}
-                    {isDisplayedDelete ? (
-                        <LikeOutlined
-                            onClick={() => {
-                                ownReaction != 1
-                                    ? setOwnReaction(1)
-                                    : setOwnReaction(0)
-                            }}
-                            title="liker"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
-                        />
-                    ) : null}
-                    {isDisplayedDelete ? (
-                        <DislikeOutlined
-                            onClick={() => {
-                                ownReaction != 2
-                                    ? setOwnReaction(2)
-                                    : setOwnReaction(0)
-                            }}
-                            title="disliker"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
-                        />
-                    ) : null}
+                    </div>
+                    <div className="flex flex-row space-x-2  p-1">
+                        {isDisplayedDelete && own ? (
+                            <DeleteFilled
+                                onClick={deleteMessage}
+                                title="supprimer le message"
+                                className="text-sky-600 cursor-pointer"
+                            />
+                        ) : null}
+                        {isDisplayedDelete ? (
+                            <LikeOutlined
+                                onClick={() => {
+                                    ownReaction != 1
+                                        ? setOwnReaction(1)
+                                        : setOwnReaction(0)
+                                }}
+                                title="liker"
+                                className="text-sky-600 cursor-pointer"
+                            />
+                        ) : null}
+                        {isDisplayedDelete ? (
+                            <DislikeOutlined
+                                onClick={() => {
+                                    ownReaction != 2
+                                        ? setOwnReaction(2)
+                                        : setOwnReaction(0)
+                                }}
+                                title="disliker"
+                                className="text-sky-600 cursor-pointer"
+                            />
+                        ) : null}
+                    </div>
+                </div>
+            )}
+            {own ? (
+                <div style={{ position: 'relative' }}>
+                    <div
+                        style={{
+                            position: 'absolute',
+                            fontSize: '24px',
+                            bottom: '-20px',
+                            right: '0px',
+                        }}
+                    >
+                        {ownReaction == 1 && <LikeTwoTone />}
+                        {ownReaction == 2 && (
+                            <DislikeTwoTone twoToneColor={'red'} />
+                        )}
+                    </div>
+                    <div
+                        style={{
+                            position: 'absolute',
+                            fontSize: '24px',
+                            bottom: '-20px',
+                            right: '30px',
+                        }}
+                    >
+                        {otherReaction == 1 && <LikeTwoTone />}
+                        {otherReaction == 2 && (
+                            <DislikeTwoTone twoToneColor={'red'} />
+                        )}
+                    </div>
                 </div>
             ) : (
                 <div>
-                    <img
-                        src={image}
-                        alt=""
-                        onClick={() => setIsDisplayedDelete(!isDisplayedDelete)}
-                    />
-                    {own ? (
-                        <div style={{ position: 'relative' }}>
-                            <div
-                                style={{
-                                    position: 'absolute',
-                                    fontSize: '24px',
-                                    bottom: '-20px',
-                                    right: '0px',
-                                }}
-                            >
-                                {ownReaction == 1 && <LikeTwoTone />}
-                                {ownReaction == 2 && (
-                                    <DislikeTwoTone twoToneColor={'red'} />
-                                )}
-                            </div>
-                            <div
-                                style={{
-                                    position: 'absolute',
-                                    fontSize: '24px',
-                                    bottom: '-20px',
-                                    right: '30px',
-                                }}
-                            >
-                                {otherReaction == 1 && <LikeTwoTone />}
-                                {otherReaction == 2 && (
-                                    <DislikeTwoTone twoToneColor={'red'} />
-                                )}
-                            </div>
-                        </div>
-                    ) : (
-                        <div>
-                            <div
-                                style={{
-                                    position: 'absolute',
-                                    fontSize: '24px',
-                                    bottom: '-20px',
-                                    left: '45px',
-                                }}
-                            >
-                                {ownReaction == 1 && <LikeTwoTone />}
-                                {ownReaction == 2 && (
-                                    <DislikeTwoTone twoToneColor={'red'} />
-                                )}
-                            </div>
-                            <div
-                                style={{
-                                    position: 'absolute',
-                                    fontSize: '24px',
-                                    bottom: '-20px',
-                                    left: '75px',
-                                }}
-                            >
-                                {otherReaction == 1 && <LikeTwoTone />}
-                                {otherReaction == 2 && (
-                                    <DislikeTwoTone twoToneColor={'red'} />
-                                )}
-                            </div>
-                        </div>
-                    )}
-
-                    {isDisplayedDelete && own ? (
-                        <DeleteFilled
-                            onClick={deleteMessage}
-                            title="supprimer le message"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
-                        />
-                    ) : null}
-                    {isDisplayedDelete ? (
-                        <LikeOutlined
-                            onClick={() => {
-                                ownReaction != 1
-                                    ? setOwnReaction(1)
-                                    : setOwnReaction(0)
-                            }}
-                            title="liker"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
-                        />
-                    ) : null}
-                    {isDisplayedDelete ? (
-                        <DislikeOutlined
-                            onClick={() => {
-                                ownReaction != 2
-                                    ? setOwnReaction(2)
-                                    : setOwnReaction(0)
-                            }}
-                            title="disliker"
-                            className="text-sky-600 cursor-pointer"
-                            style={{ width: '30px', paddingTop: '15px' }}
-                        />
-                    ) : null}
+                    <div
+                        style={{
+                            position: 'absolute',
+                            fontSize: '24px',
+                            bottom: '-20px',
+                            left: '45px',
+                        }}
+                    >
+                        {ownReaction == 1 && <LikeTwoTone />}
+                        {ownReaction == 2 && (
+                            <DislikeTwoTone twoToneColor={'red'} />
+                        )}
+                    </div>
+                    <div
+                        style={{
+                            position: 'absolute',
+                            fontSize: '24px',
+                            bottom: '-20px',
+                            left: '75px',
+                        }}
+                    >
+                        {otherReaction == 1 && <LikeTwoTone />}
+                        {otherReaction == 2 && (
+                            <DislikeTwoTone twoToneColor={'red'} />
+                        )}
+                    </div>
                 </div>
             )}
         </div>
