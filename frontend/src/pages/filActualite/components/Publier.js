@@ -194,7 +194,7 @@ function Publier({ posts, setPosts, socket, lastMessage, followers }) {
                                         maxRows={5}
                                         maxLength={300}
                                         className="text-md resize-none pr-3 pl-3 pt-2 pb-2 rounded-md border border-stone-400 w-full"
-                                        placeholder="Quoi de neuf ?"
+                                        placeholder="Quoi de neuf ? (Ex: Publiez des photos, lien vidéo youtube ...)"
                                         value={myPost}
                                         onChange={(e) => {
                                             setMyPost(e.target.value)
