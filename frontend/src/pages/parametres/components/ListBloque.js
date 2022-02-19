@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { api } from '../../../constants/constants'
 import { setProp } from '../../../redux/actions/userActions'
+import photoProfil_vide from '../../../assets/images/image_profil_vide.png'
 
 const axios = require('axios')
 function ListBloque() {
@@ -41,13 +42,13 @@ function ListBloque() {
         getBloque()
     }, [])
     return (
-        <div className="w-10/12 mr-auto ml-auto">
+        <div className="w-10/12 mr-auto ml-auto items-center">
             <div
                 id="scrollableDiv"
                 style={{
                     maxHeight: 250,
                     overflow: 'auto',
-                    padding: '0 16px',
+                    padding: '0 6px',
                     border: '1px solid rgba(140, 140, 140, 0.35)',
                 }}
             >
@@ -58,19 +59,39 @@ function ListBloque() {
                         <List.Item>
                             <List.Item.Meta
                                 avatar={
-                                    <Avatar src="https://joeschmoe.io/api/v1/random" />
+                                    item.image !== null ? (
+                                        <Avatar
+                                            src={item.image}
+                                            className="w-12 h-12 border border-stone-200 hover:opacity-80 "
+                                            alt="photo profil"
+                                        />
+                                    ) : (
+                                        <Avatar
+                                            src={photoProfil_vide}
+                                            className="w-12 h-12 border border-stone-200 hover:opacity-80 "
+                                            alt="photo profil"
+                                        />
+                                    )
                                 }
                                 title={
-                                    <div>
-                                        <Link to={'/profil' + item.id}>
-                                            {item.lastname} {item.firstname}
-                                        </Link>
-                                        <button
-                                            className="p-1 bg-red-700 text-white float-right"
-                                            onClick={() => unlock(item.id)}
-                                        >
-                                            Supprimer de la liste
-                                        </button>
+                                    <div className="flex flex-row items-center">
+                                        <div className="w-9/12">
+                                            <Link to={'/profil/' + item.id}>
+                                                <span className="font-bold space-x-2">
+                                                    {item.firstname}{' '}
+                                                    {item.lastname}
+                                                </span>
+                                            </Link>
+                                        </div>
+
+                                        <div>
+                                            <button
+                                                className="p-1 bg-red-700 text-white float-right rounded-md"
+                                                onClick={() => unlock(item.id)}
+                                            >
+                                                Débloquer
+                                            </button>
+                                        </div>
                                     </div>
                                 }
                             />
