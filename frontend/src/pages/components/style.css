@@ -22,6 +22,30 @@
     display: none;
 }
 
+.banniere {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: absolute;
+    background-color: rgb(255, 73, 73);
+    color: white;
+}
+
+.txt {
+    white-space: nowrap;
+    /* font-size: 200px; */
+    animation: scrollTxt 35s linear infinite;
+}
+
+@keyframes scrollTxt {
+    100% {
+        transform: translate(-100%, 0%);
+    }
+    0% {
+        transform: translate(100%, 0);
+    }
+}
+
 @media only screen and (max-width: 991px) {
     .gauche {
         position: fixed;
@@ -46,10 +70,6 @@
     #btn-right {
         display: block;
     }
-    /* #droite {
-        position: fixed;
-        right: 0;
-    } */
 }
 
 @media only screen and (max-width: 345px) {
@@ -87,10 +107,10 @@
     align-items: center;
     width: 285px;
     height: 32px;
-    /* background-color: white; */
     margin-top: 15px;
     border-radius: 15px;
 }
+
 .inputrecherche {
     width: 250px;
     height: 32px;

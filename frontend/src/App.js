@@ -30,6 +30,7 @@ import NTFPost from './pages/notifications/components/NTFPost'
 import RecupMdp from './pages/connexionInscription/RecupMdp'
 import Followers from './pages/profil/components/Followers'
 import PageFollow from './pages/profil/components/PageFollow'
+import Condition from './pages/components/Conditions'
 function App() {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
@@ -104,6 +105,10 @@ function App() {
 
                 {!user.isLogged ? (
                     <Routes>
+                        <Route
+                            path="/condition-utilisation"
+                            element={<Condition />}
+                        />
                         <Route path="/inscription" element={<Inscription />} />
                         <Route
                             path="/mot-de-passe-oublier"
@@ -113,6 +118,10 @@ function App() {
                     </Routes>
                 ) : (
                     <Routes>
+                        <Route
+                            path="/condition-utilisation"
+                            element={<Condition />}
+                        />
                         <Route
                             path="/tendances"
                             element={

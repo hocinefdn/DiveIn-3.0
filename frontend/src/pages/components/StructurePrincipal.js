@@ -21,7 +21,7 @@ import { Tooltip } from '@mui/material'
 import AccountMenu from './AccountMenu'
 import PetitMenu from './PetitMenu'
 import BarreRecherche from './BarreRecherche'
-
+import Banniere from './Banniere'
 function StructurePrincipal({
     titrePage,
     contenu,
@@ -105,8 +105,6 @@ function StructurePrincipal({
         }
     }, [lastMessage])
 
-
-
     return (
         <div className="">
             <Layout>
@@ -121,6 +119,7 @@ function StructurePrincipal({
                         position: 'fixed',
                     }}
                 >
+                    <Banniere />
                     <div className="flex flex-row justify-center ">
                         <div className="absolute mt-2.5 left-5 flex flex-row ">
                             <TemporaryDrawer className="text-white font-bold" />
