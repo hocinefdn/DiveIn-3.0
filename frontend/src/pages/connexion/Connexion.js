@@ -82,11 +82,8 @@ function Connexion() {
                         <div className="text-red-600">{msgErrMdp}</div>
                     </div>
                     <div className="text">
-                        {/* <a href={`${apiReact}mot-de-passe-oblie`}>
-                            Mot de passe oublier ?
-                        </a> */}
                         <Link to={`mot-de-passe-oublier`}>
-                            Mot de passe oublier ?
+                            Mot de passe oublié ?
                         </Link>
                     </div>
                     <div className="button">
@@ -98,7 +95,7 @@ function Connexion() {
                     </div>
                     <div className="text sign-up-text">
                         Vous n'avez pas de compte?
-                        <label htmlFor="flip"> Inscrivez vous</label>
+                        <label htmlFor="flip">Inscrivez vous</label>
                     </div>
                 </div>
             </form>
